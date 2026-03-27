@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://do03p4467dnyq"]
+
+[ext_resource type="Script" uid="uid://xgkeerdb0kaa" path="res://_rat/rat.gd" id="1_1meta"]
+[ext_resource type="Texture2D" uid="uid://bydh5cqb6r4py" path="res://icon.svg" id="1_griss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1meta"]
+size = Vector2(118, 120)
+
+[node name="Rat" type="CharacterBody2D" unique_id=814430971]
+script = ExtResource("1_1meta")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1322469895]
+texture = ExtResource("1_griss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156681356]
+shape = SubResource("RectangleShape2D_1meta")

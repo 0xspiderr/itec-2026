@@ -34,9 +34,3 @@ func _on_start_btn_pressed() -> void:
 	if not multiplayer.is_server():
 		return
 	start_level.emit() # called in the game parent scene
-	_hide_ui.rpc()
-
-
-@rpc("authority", "call_local", "reliable")
-func _hide_ui() -> void:
-	hide()

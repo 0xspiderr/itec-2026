@@ -1,14 +1,17 @@
 class_name LevelManager extends Node2D
 
 
-@onready var lobby: Lobby = %Lobby
-const LEVEL_1 = preload("uid://7tacau4f3hs6")
+const RAT = preload("uid://do03p4467dnyq")
+@onready var players: Node = $Players
 
 
 func _ready() -> void:
-	lobby.start_level.connect(_on_start_level)
+	_spawn_rat()
 
 
-func _on_start_level() -> void:
-	var new_level = LEVEL_1.instantiate()
-	add_child(new_level, true)
+func _spawn_rat() -> void:
+	if not multiplayer.is_server():
+		return
+	
+	var new_rat = RAT.instantiate() as RatController
+	players.add_child(new_rat)

@@ -2,17 +2,15 @@
 
 [ext_resource type="Script" uid="uid://djngvgoichge4" path="res://_game/game.gd" id="1_k1epg"]
 [ext_resource type="PackedScene" uid="uid://dlto07yleoj1b" path="res://_lobby/lobby.tscn" id="1_wt8tb"]
-[ext_resource type="Script" uid="uid://bcdqsxsl18nyn" path="res://_level/level_manager.gd" id="2_t5wuy"]
 
 [node name="Game" type="Node2D" unique_id=1684282353]
 script = ExtResource("1_k1epg")
 
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="." unique_id=407903965]
 _spawnable_scenes = PackedStringArray("uid://7tacau4f3hs6")
-spawn_path = NodePath("../Level")
+spawn_path = NodePath("../LevelHolder")
 
-[node name="Level" type="Node2D" parent="." unique_id=1435878596]
-script = ExtResource("2_t5wuy")
+[node name="LevelHolder" type="Node" parent="." unique_id=817660482]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=254985339]
 
