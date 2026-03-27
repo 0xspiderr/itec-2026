@@ -21,6 +21,7 @@ custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 26
+text = "127.0.0.1"
 placeholder_text = "IP Addres"
 alignment = 1
 
