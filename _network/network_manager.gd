@@ -1,6 +1,9 @@
 extends Node
 
 
+signal peer_joined(peer_id)
+
+
 const DEFAULT_IP: String = "localhost"
 const PORT: int = 9000
 var peers: Dictionary = {}
@@ -35,6 +38,7 @@ func create_host():
 	peers[1] = peer_name
 	
 	print("created host")
+	peer_joined.emit(1) # sendto lobby
 
 
 func create_client(ip_addr: String):
@@ -57,6 +61,7 @@ func _on_player_connected(id: int) -> void:
 func _register_peer() -> void:
 	var peer_id: int = multiplayer.get_remote_sender_id()
 	peers[peer_id] = peer_name
+	peer_joined.emit(peer_id) # sendto lobby
 	#print(peers)
 
 
