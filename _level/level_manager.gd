@@ -15,8 +15,10 @@ func _spawn_rats() -> void:
 		return
 	
 	var spawns = spawn_points.get_children()
-	for i in multiplayer.get_peers().size() + 1:
+	for id in NetworkManager.peers:
 		var new_rat = RAT.instantiate() as RatController
 		var spawn_point = spawns.pop_front()
 		new_rat.position = spawn_point.position
+		new_rat.name = str(id) 
+		new_rat.player_id = id
 		players.add_child(new_rat, true)

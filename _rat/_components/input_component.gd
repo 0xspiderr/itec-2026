@@ -7,5 +7,4 @@ class_name InputComponent extends Node
 func _input(_event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return
-	
 	direction = Input.get_vector("left", "right", "up", "down")

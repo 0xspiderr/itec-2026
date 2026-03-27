@@ -8,6 +8,12 @@
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath(".:player_id")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1meta"]
 size = Vector2(118, 120)
@@ -15,13 +21,13 @@ size = Vector2(118, 120)
 [node name="Rat" type="CharacterBody2D" unique_id=814430971]
 script = ExtResource("1_1meta")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1256338610]
+[node name="ServerSync" type="MultiplayerSynchronizer" parent="." unique_id=1390654973]
+replication_config = SubResource("SceneReplicationConfig_1meta")
 
 [node name="InputComponent" parent="." unique_id=699884673 instance=ExtResource("2_n77cq")]
 unique_name_in_owner = true
 
-[node name="ServerSync" type="MultiplayerSynchronizer" parent="." unique_id=1390654973]
-replication_config = SubResource("SceneReplicationConfig_1meta")
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1256338610]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1322469895]
 texture = ExtResource("1_griss")
