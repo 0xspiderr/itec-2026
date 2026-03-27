@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bbfveqdd0ihau"]
+
+[ext_resource type="Script" uid="uid://djngvgoichge4" path="res://_game/game.gd" id="1_k1epg"]
+[ext_resource type="PackedScene" uid="uid://dlto07yleoj1b" path="res://_lobby/lobby.tscn" id="1_wt8tb"]
+[ext_resource type="Script" uid="uid://bcdqsxsl18nyn" path="res://_level/level_manager.gd" id="2_t5wuy"]
+
+[node name="Game" type="Node2D" unique_id=1684282353]
+script = ExtResource("1_k1epg")
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="." unique_id=407903965]
+_spawnable_scenes = PackedStringArray("uid://7tacau4f3hs6")
+spawn_path = NodePath("../Level")
+
+[node name="Level" type="Node2D" parent="." unique_id=1435878596]
+script = ExtResource("2_t5wuy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=254985339]
+
+[node name="Lobby" parent="CanvasLayer" unique_id=1552650006 instance=ExtResource("1_wt8tb")]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+size_flags_vertical = 3

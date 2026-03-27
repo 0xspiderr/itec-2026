@@ -4,4 +4,6 @@ class_name LobbyItem extends HBoxContainer
 
 
 func setup(peer_name: String) -> void:
+	await ready
 	name_label.text = peer_name
+	pass
