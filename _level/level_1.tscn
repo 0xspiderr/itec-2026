@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://7tacau4f3hs6"]
+
+[ext_resource type="Texture2D" uid="uid://bydh5cqb6r4py" path="res://icon.svg" id="1_42i0l"]
+[ext_resource type="Script" uid="uid://bcdqsxsl18nyn" path="res://_level/level_manager.gd" id="1_xtfeo"]
+
+[node name="Level1" type="Node2D" unique_id=1302037982]
+script = ExtResource("1_xtfeo")
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=503721255]
+_spawnable_scenes = PackedStringArray("uid://do03p4467dnyq")
+spawn_path = NodePath("../Players")
+
+[node name="Players" type="Node" parent="." unique_id=1849083307]
+
+[node name="SpawnPoints" type="Node" parent="." unique_id=2136069432]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=1585456312]
+position = Vector2(521, 168)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=347573964]
+position = Vector2(123, 157)
+
+[node name="Environment" type="Node2D" parent="." unique_id=1130732815]
+
+[node name="Ground" type="Sprite2D" parent="Environment" unique_id=717154542]
+position = Vector2(587, 338)
+scale = Vector2(8.046875, 5.34375)
+texture = ExtResource("1_42i0l")
