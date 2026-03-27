@@ -2,9 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://bydh5cqb6r4py" path="res://icon.svg" id="1_42i0l"]
 [ext_resource type="Script" uid="uid://bcdqsxsl18nyn" path="res://_level/level_manager.gd" id="1_xtfeo"]
+[ext_resource type="SpriteFrames" uid="uid://cqx3n6ovknur7" path="res://_rat/sprite_anim_resources/rat_variation_1.tres" id="2_7epgt"]
+[ext_resource type="SpriteFrames" uid="uid://cpe0b7qnsks6c" path="res://_rat/sprite_anim_resources/rat_variation_2.tres" id="3_xmt5o"]
 
 [node name="Level1" type="Node2D" unique_id=1302037982]
 script = ExtResource("1_xtfeo")
+player_sprite_frames = Array[SpriteFrames]([ExtResource("2_7epgt"), ExtResource("3_xmt5o")])
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=503721255]
 _spawnable_scenes = PackedStringArray("uid://do03p4467dnyq")

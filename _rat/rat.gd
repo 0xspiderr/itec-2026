@@ -6,15 +6,20 @@ class_name RatController extends CharacterBody2D
 		# set input authority to the local player
 		player_id = id
 		%InputComponent.set_multiplayer_authority(id)
+@export var sprite_frame_index: int = 0
 
 const SPEED = 300.0
 
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var input_component: InputComponent = $InputComponent
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@export var player_sprite_frames: Array[SpriteFrames]
 
 
 func _ready() -> void:
+	var sprite_frame = player_sprite_frames.get(sprite_frame_index)
+	if sprite_frame:
+		animated_sprite_2d.sprite_frames = sprite_frame
 	if multiplayer.get_unique_id() == player_id:
 		camera_2d.make_current()
 
@@ -32,13 +37,13 @@ func _move_player() -> void:
 		animated_sprite_2d.play(&"idle")
 	elif input_component.direction == Vector2.LEFT:
 		animated_sprite_2d.flip_h = false
-		animated_sprite_2d.play(&"move_left")
+		animated_sprite_2d.play(&"walk_left")
 	elif input_component.direction == Vector2.RIGHT:
 		animated_sprite_2d.flip_h = true
-		animated_sprite_2d.play(&"move_left")
+		animated_sprite_2d.play(&"walk_left")
 	elif input_component.direction == Vector2.DOWN:
-		animated_sprite_2d.play(&"move_down")
+		animated_sprite_2d.play(&"walk_down")
 	elif input_component.direction == Vector2.UP:
-		animated_sprite_2d.play(&"move_up")
+		animated_sprite_2d.play(&"walk_up")
 	
 	velocity = input_component.direction * SPEED
