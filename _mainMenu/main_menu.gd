@@ -7,7 +7,6 @@ extends MarginContainer
 @onready var error: CenterContainer = $CenterContainer
 
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ip_addres.text_changed.connect(_check_fields)
@@ -24,7 +23,8 @@ func _check_fields(_new_text: String = "") -> void:
 
 func _on_button_pressed() -> void:
 	if ip_addres.text.is_valid_ip_address():
-		print("try_connect")
+		NetworkManager.peer_name = name_player.text
+		NetworkManager.create_client(ip_addres.text)
 	else:
 		menu.hide()
 		error.show()
@@ -33,3 +33,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_pressed() and error.visible:
 		menu.show()
 		error.hide()
+
+
+func _on_host_btn_pressed() -> void:
+	NetworkManager.peer_name = name_player.text
+	NetworkManager.create_host()

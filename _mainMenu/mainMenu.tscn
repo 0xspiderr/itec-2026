@@ -37,6 +37,13 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
 text = "Connect"
 
+[node name="HostBtn" type="Button" parent="menuContainer" unique_id=907993549]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Host"
+
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=629995657]
 visible = false
 layout_mode = 2
@@ -67,3 +74,5 @@ text = "Not a valid ip addres"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="menuContainer/HostBtn" to="." method="_on_host_btn_pressed"]

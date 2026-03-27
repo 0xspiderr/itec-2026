@@ -8,6 +8,7 @@ const DEFAULT_IP: String = "localhost"
 const PORT: int = 9000
 var peers: Dictionary = {}
 var peer_name: String = "default"
+const GAME = preload("uid://bbfveqdd0ihau")
 
 
 func _ready() -> void:
@@ -20,11 +21,11 @@ func _ready() -> void:
 	if not OS.is_debug_build():
 		return
 	
-	if "--server" in OS.get_cmdline_args():
-		create_host()
-	
-	if "--client" in OS.get_cmdline_args():
-		create_client(DEFAULT_IP)
+	#if "--server" in OS.get_cmdline_args():
+		#create_host()
+	#
+	#if "--client" in OS.get_cmdline_args():
+		#create_client(DEFAULT_IP)
 
 
 func create_host():
@@ -38,6 +39,7 @@ func create_host():
 	peers[1] = peer_name
 	
 	print("created host")
+	get_tree().change_scene_to_packed(GAME)
 	update_lobby_ui.emit() # sendto lobby
 
 
@@ -50,6 +52,7 @@ func create_client(ip_addr: String):
 		return err
 	
 	multiplayer.multiplayer_peer = peer
+	get_tree().change_scene_to_packed(GAME)
 	print("created client")
 
 
