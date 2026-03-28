@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bjrug614wmh53"]
+
+[ext_resource type="Texture2D" uid="uid://k6e0e28d0gwb" path="res://Assets/Environment_objects/Decorations/decoration_plant.png" id="1_t0dab"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upwp8"]
+size = Vector2(46, 11)
+
+[node name="plant" type="StaticBody2D" unique_id=43269674]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=105358007]
+position = Vector2(0, -8)
+texture = ExtResource("1_t0dab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1009456159]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_upwp8")
