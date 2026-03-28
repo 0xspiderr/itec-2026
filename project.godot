@@ -26,7 +26,8 @@ folder_colors={
 "res://_level/": "green",
 "res://_lobby/": "teal",
 "res://_network/": "blue",
-"res://_rat/": "red"
+"res://_rat/": "red",
+"res://pickable_item/": "orange"
 }
 
 [gui]

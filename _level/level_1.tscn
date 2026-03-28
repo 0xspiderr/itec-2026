@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bydh5cqb6r4py" path="res://icon.svg" id="1_42i0l"]
 [ext_resource type="Script" uid="uid://bcdqsxsl18nyn" path="res://_level/level_manager.gd" id="1_xtfeo"]
+[ext_resource type="PackedScene" uid="uid://ddfopkjypbgg1" path="res://_soup/soup.tscn" id="3_q4hp6"]
 
 [node name="Level1" type="Node2D" unique_id=1302037982]
 script = ExtResource("1_xtfeo")
@@ -64,3 +65,5 @@ texture = ExtResource("1_42i0l")
 
 [node name="ItemSpawnTimer" type="Timer" parent="." unique_id=1399354534]
 wait_time = 2.0
+
+[node name="Soup" parent="." unique_id=1386634272 instance=ExtResource("3_q4hp6")]

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cbhv3661lujnj"]
+
+[ext_resource type="Texture2D" uid="uid://be2tp481vo457" path="res://Assets/UI/speech_bubble.png" id="1_rmj1d"]
+[ext_resource type="Texture2D" uid="uid://cu33ri3s65d38" path="res://Assets/Pickups/pickup_chanterelle.png" id="2_jdvu1"]
+
+[node name="SpeechBubble" type="Sprite2D" unique_id=1533000519]
+texture_filter = 1
+texture = ExtResource("1_rmj1d")
+
+[node name="ItemSprite" type="Sprite2D" parent="." unique_id=1228731220]
+texture_filter = 1
+texture = ExtResource("2_jdvu1")
