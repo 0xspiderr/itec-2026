@@ -31,8 +31,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if not multiplayer.is_server():
-		return
+	#if not multiplayer.is_server():
+		#return
 	
 	_move_player()
 	_animate_player()

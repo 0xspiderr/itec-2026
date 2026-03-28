@@ -1,7 +1,7 @@
 extends Node
 
 
-signal update_lobby_ui(peer_id)
+signal update_lobby_ui()
 
 
 const DEFAULT_IP: String = "localhost"
@@ -57,15 +57,15 @@ func create_client(ip_addr: String):
 
 
 func _on_player_connected(id: int) -> void:
-	_register_peer.rpc_id(id)
+	_register_peer.rpc_id(id, peer_name)
 
 
 @rpc("any_peer","reliable")
-func _register_peer() -> void:
+func _register_peer(new_peer_name: String) -> void:
 	var peer_id: int = multiplayer.get_remote_sender_id()
-	peers[peer_id] = peer_name
+	peers[peer_id] = new_peer_name
 	update_lobby_ui.emit() # sendto lobby
-	#print(peers)
+	print(peers)
 
 
 func _on_player_disconnected(id: int) -> void:
@@ -77,7 +77,6 @@ func _on_player_disconnected(id: int) -> void:
 func _on_connected_to_server() -> void:
 	var peer_id: int = multiplayer.get_unique_id()
 	peers[peer_id] = peer_name
-	#print(peers)
 	
 
 func _on_connected_fail() -> void:
