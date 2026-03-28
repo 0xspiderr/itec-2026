@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://g3sahwggyswl"]
+
+[ext_resource type="Texture2D" uid="uid://dvijotoehyp5y" path="res://Assets/UI/UI.png" id="1_3x7sg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_prsc4"]
+texture = ExtResource("1_3x7sg")
+texture_margin_left = 21.0
+texture_margin_top = 10.0
+texture_margin_right = 20.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(0, 64, 64, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3x7sg"]
+texture = ExtResource("1_3x7sg")
+texture_margin_left = 23.0
+texture_margin_top = 10.0
+texture_margin_right = 24.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(0, 96, 64, 32)
+
+[node name="ProgressBar" type="ProgressBar" unique_id=640946887]
+texture_filter = 1
+offset_right = 322.0
+offset_bottom = 43.0
+theme_override_styles/background = SubResource("StyleBoxTexture_prsc4")
+theme_override_styles/fill = SubResource("StyleBoxTexture_3x7sg")
+value = 100.0
+show_percentage = false

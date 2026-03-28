@@ -13,6 +13,7 @@ var ingredients: Array[String] = []
 
 @onready var speech_bubble: Sprite2D = $SpeechBubbleSpawn/SpeechBubble
 @onready var bubble_item: Sprite2D = $SpeechBubbleSpawn/SpeechBubble/BubbleItem
+@onready var progress_bar: ProgressBar = %ProgressBar
 
 
 
@@ -31,6 +32,8 @@ const HOVER_AMPLITUDE: float = 8.0
 const HOVER_SPEED: float = 2.
 
 func _ready() -> void:
+	if progress_bar:
+		progress_bar.max_value = starting_time
 	base_bubble_y = speech_bubble.position.y
 	soup_time = starting_time
 	
@@ -40,7 +43,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_hover_bubble()
-	
+	_update_progress_bar()
 	if not multiplayer.is_server() or is_game_over:
 		return
 	
@@ -116,3 +119,9 @@ func _hover_bubble() -> void:
 	hover_time += get_process_delta_time()
 	var y_offset = sin(hover_time * HOVER_SPEED) * HOVER_AMPLITUDE
 	speech_bubble.position.y = base_bubble_y + y_offset
+
+
+func _update_progress_bar() -> void:
+	if progress_bar:
+		progress_bar.value = soup_time
+		

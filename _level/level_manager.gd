@@ -10,6 +10,7 @@ const PICKABLE_ITEM = preload("uid://ckl8vqyes3cml")
 @onready var pickable_items: Node = $PickableItems
 @onready var pickable_spawn_points: Array[Node] = $PickableSpawnPoints.get_children()
 
+
 func _ready() -> void:
 	_spawn_rats()
 	
