@@ -12,7 +12,6 @@ func _ready() -> void:
 	ip_addres.text_changed.connect(_check_fields)
 	name_player.text_changed.connect(_check_fields)
 	connect_button.disabled = true
-	connect_button.pressed.connect(_on_button_pressed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _check_fields(_new_text: String = "") -> void:
@@ -20,14 +19,6 @@ func _check_fields(_new_text: String = "") -> void:
 		connect_button.disabled = true
 	else:
 		connect_button.disabled = false
-
-func _on_button_pressed() -> void:
-	if ip_addres.text.is_valid_ip_address():
-		NetworkManager.peer_name = name_player.text
-		NetworkManager.create_client(ip_addres.text)
-	else:
-		menu.hide()
-		error.show()
 
 func _input(event: InputEvent) -> void:
 	if event.is_pressed() and error.visible:
@@ -37,3 +28,12 @@ func _input(event: InputEvent) -> void:
 func _on_host_btn_pressed() -> void:
 	NetworkManager.peer_name = name_player.text
 	NetworkManager.create_host()
+
+
+func _on_connect_btn_pressed() -> void:
+	if ip_addres.text.is_valid_ip_address():
+		NetworkManager.peer_name = name_player.text
+		NetworkManager.create_client(ip_addres.text)
+	else:
+		menu.hide()
+		error.show()
