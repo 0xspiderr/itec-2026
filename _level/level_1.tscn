@@ -68,10 +68,12 @@ texture = ExtResource("1_42i0l")
 wait_time = 2.0
 
 [node name="Soup" parent="." unique_id=1386634272 instance=ExtResource("3_q4hp6")]
+z_index = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1183914235]
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=536882747]
+texture_filter = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

@@ -60,10 +60,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y8oxa"]
-radius = 70.0
+radius = 66.007576
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8oxa"]
-size = Vector2(179, 154)
+size = Vector2(151, 146)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_y8oxa"]
 properties/0/path = NodePath(".:soup_time")
@@ -97,7 +97,7 @@ shape = SubResource("CircleShape2D_y8oxa")
 [node name="InteractArea" type="Area2D" parent="." unique_id=956630163]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=21796555]
-position = Vector2(0.5, 2)
+position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_y8oxa")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1514156742]
