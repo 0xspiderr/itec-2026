@@ -65,7 +65,6 @@ func _register_peer(new_peer_name: String) -> void:
 	var peer_id: int = multiplayer.get_remote_sender_id()
 	peers[peer_id] = new_peer_name
 	update_lobby_ui.emit() # sendto lobby
-	print(peers)
 
 
 func _on_player_disconnected(id: int) -> void:

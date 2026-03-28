@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bydh5cqb6r4py" path="res://icon.svg" id="1_42i0l"]
 [ext_resource type="Script" uid="uid://bcdqsxsl18nyn" path="res://_level/level_manager.gd" id="1_xtfeo"]
+[ext_resource type="PackedScene" uid="uid://ddfopkjypbgg1" path="res://_soup/soup.tscn" id="3_q4hp6"]
 
 [node name="Level1" type="Node2D" unique_id=1302037982]
 script = ExtResource("1_xtfeo")
@@ -26,6 +27,35 @@ position = Vector2(521, 168)
 [node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=347573964]
 position = Vector2(123, 157)
 
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" unique_id=463922787]
+position = Vector2(123, 348)
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=1968183081]
+position = Vector2(514, 375)
+
+[node name="PickableSpawnPoints" type="Node" parent="." unique_id=156564525]
+
+[node name="Marker2D" type="Marker2D" parent="PickableSpawnPoints" unique_id=1232301253]
+position = Vector2(164, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="PickableSpawnPoints" unique_id=1137620558]
+position = Vector2(0, 129)
+
+[node name="Marker2D3" type="Marker2D" parent="PickableSpawnPoints" unique_id=306315078]
+position = Vector2(513, -8)
+
+[node name="Marker2D4" type="Marker2D" parent="PickableSpawnPoints" unique_id=615407072]
+position = Vector2(-39, 438)
+
+[node name="Marker2D5" type="Marker2D" parent="PickableSpawnPoints" unique_id=921566546]
+position = Vector2(115, 598)
+
+[node name="Marker2D6" type="Marker2D" parent="PickableSpawnPoints" unique_id=512910466]
+position = Vector2(540, 551)
+
+[node name="Marker2D7" type="Marker2D" parent="PickableSpawnPoints" unique_id=133077630]
+position = Vector2(793, 398)
+
 [node name="Environment" type="Node2D" parent="." unique_id=1130732815]
 
 [node name="Ground" type="Sprite2D" parent="Environment" unique_id=717154542]
@@ -34,4 +64,6 @@ scale = Vector2(8.046875, 5.34375)
 texture = ExtResource("1_42i0l")
 
 [node name="ItemSpawnTimer" type="Timer" parent="." unique_id=1399354534]
-wait_time = 5.0
+wait_time = 2.0
+
+[node name="Soup" parent="." unique_id=1386634272 instance=ExtResource("3_q4hp6")]
