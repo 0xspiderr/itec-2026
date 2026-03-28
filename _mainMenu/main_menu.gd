@@ -1,10 +1,10 @@
 extends MarginContainer
 
-@onready var ip_addres: LineEdit = $menuContainer/IPAddres
-@onready var name_player: LineEdit = $menuContainer/Name
-@onready var connect_button: Button = $menuContainer/Connect
-@onready var menu: VBoxContainer = $menuContainer
-@onready var error: CenterContainer = $CenterContainer
+@onready var ip_addres: LineEdit = %IPAddres
+@onready var name_player: LineEdit = %Name
+@onready var connect_button: Button = %Connect
+@onready var menu: VBoxContainer = %menuContainer
+@onready var error: CenterContainer = %CenterContainer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,7 +33,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_pressed() and error.visible:
 		menu.show()
 		error.hide()
-
 
 func _on_host_btn_pressed() -> void:
 	NetworkManager.peer_name = name_player.text
