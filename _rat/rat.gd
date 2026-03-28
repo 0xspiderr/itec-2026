@@ -71,28 +71,6 @@ func _move_player() -> void:
 
 func _animate_player() -> void:
 	var dir = input_component.direction
-<<<<<<< HEAD
-	
-	if dir == Vector2.ZERO:
-		var anim = ANIM_MAP[Vector2.ZERO] if items_cnt == 0 else ANIM_HOLD[Vector2.ZERO]
-		animated_sprite_2d.play(anim)
-		return
-		
-	var anim_dir: Vector2
-	if dir.x != 0 and dir.y != 0:
-		anim_dir = Vector2(dir.x, 0)  # prefer horizontal
-	else:
-		anim_dir = dir
-		
-	if ANIM_MAP.has(anim_dir) and items_cnt == 0:
-		print(anim_dir)
-		animated_sprite_2d.play(ANIM_MAP[anim_dir])
-	elif ANIM_HOLD.has(anim_dir):
-		animated_sprite_2d.play(ANIM_HOLD[anim_dir])
-	
-	if dir.x != 0:
-		animated_sprite_2d.flip_h = (dir.x > 0.0)
-=======
 	
 	if dir == Vector2.ZERO:
 		if picked_items.is_empty():
@@ -118,7 +96,6 @@ func _animate_player() -> void:
 	else:
 		if ANIM_HOLD.has(anim_key):
 			animated_sprite_2d.play(ANIM_HOLD[anim_key])
->>>>>>> origin/main
 
 
 func _on_pickup_pressed() -> void:
