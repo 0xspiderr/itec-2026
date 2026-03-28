@@ -5,9 +5,47 @@
 [ext_resource type="Texture2D" uid="uid://bvfotj7w8khai" path="res://Assets/Map/tree_layer_map_2_bigger.png" id="3_brrif"]
 [ext_resource type="PackedScene" uid="uid://ddfopkjypbgg1" path="res://_soup/soup.tscn" id="3_q4hp6"]
 [ext_resource type="PackedScene" uid="uid://g3sahwggyswl" path="res://_hud/soup_time_bar.tscn" id="4_7epgt"]
+[ext_resource type="Texture2D" uid="uid://eubsoki7vsy5" path="res://Assets/Environment_objects/Houses/empty_house.png" id="4_brrif"]
+[ext_resource type="Texture2D" uid="uid://d1qwrtklf4pp8" path="res://Assets/Environment_objects/Houses/house_with_baby_rats.png" id="5_7q5q5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmt5o"]
 size = Vector2(215, 2534)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk5x0"]
+atlas = ExtResource("5_7q5q5")
+region = Rect2(0, 0, 142, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7chpt"]
+atlas = ExtResource("5_7q5q5")
+region = Rect2(142, 0, 142, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cd7e"]
+atlas = ExtResource("5_7q5q5")
+region = Rect2(284, 0, 142, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bujui"]
+atlas = ExtResource("5_7q5q5")
+region = Rect2(426, 0, 142, 123)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v2e8c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk5x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7chpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cd7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bujui")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Level1" type="Node2D" unique_id=1302037982]
 script = ExtResource("1_xtfeo")
@@ -127,7 +165,7 @@ position = Vector2(12.5, 43)
 shape = SubResource("RectangleShape2D_xmt5o")
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="Environment" unique_id=1939976688]
-position = Vector2(-1187, -680.0001)
+position = Vector2(-1150.0001, -643.00006)
 rotation = 0.7853982
 scale = Vector2(1, 0.48000056)
 
@@ -136,7 +174,7 @@ position = Vector2(12.5, 43)
 shape = SubResource("RectangleShape2D_xmt5o")
 
 [node name="StaticBody2D7" type="StaticBody2D" parent="Environment" unique_id=1892521669]
-position = Vector2(-988.99994, 730)
+position = Vector2(-962.9999, 715.99994)
 rotation = 2.268928
 scale = Vector2(1, 0.48000056)
 
@@ -145,7 +183,7 @@ position = Vector2(12.5, 43)
 shape = SubResource("RectangleShape2D_xmt5o")
 
 [node name="StaticBody2D8" type="StaticBody2D" parent="Environment" unique_id=1609615446]
-position = Vector2(1253, -716.9999)
+position = Vector2(1233.9999, -694.99994)
 rotation = 2.268928
 scale = Vector2(1, 0.48000056)
 
@@ -159,6 +197,34 @@ position = Vector2(1471, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D2" unique_id=2125023564]
 position = Vector2(12.5, 43)
 shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="Houses" type="Node2D" parent="Environment" unique_id=248064945]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Houses" unique_id=9571752]
+z_index = 1
+texture_filter = 1
+position = Vector2(-282, -130)
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Houses/StaticBody2D" unique_id=1723869165]
+texture = ExtResource("4_brrif")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Houses/StaticBody2D" unique_id=734932733]
+polygon = PackedVector2Array(-84, 33, 19, 75, 103, 17, 60, -22, -51, -11)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Environment/Houses" unique_id=1480990287]
+z_index = 1
+texture_filter = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Environment/Houses/StaticBody2D2" unique_id=1164175461]
+position = Vector2(213, -163)
+sprite_frames = SubResource("SpriteFrames_v2e8c")
+autoplay = "default"
+frame = 2
+frame_progress = 0.87153286
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Houses/StaticBody2D2" unique_id=722618620]
+polygon = PackedVector2Array(130, -136, 142, -189, 236, -202, 272, -177, 300, -124, 198, -92)
 
 [node name="ItemSpawnTimer" type="Timer" parent="." unique_id=1399354534]
 wait_time = 2.0

@@ -110,6 +110,7 @@ position = Vector2(49, -78)
 
 [node name="SpeechBubble" type="Sprite2D" parent="SpeechBubbleSpawn" unique_id=1193881301]
 visible = false
+z_index = 1
 texture_filter = 1
 texture = ExtResource("6_8c1p4")
 
