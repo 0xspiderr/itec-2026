@@ -10,6 +10,8 @@ class_name RatController extends CharacterBody2D
 @export var sprite_frame_index: int = 0
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var item_tex: TextureRect = $CanvasLayer/MarginContainer/ItemSlot/ItemTex
+@onready var name_label: Label = %NameLabel
+var is_carrying_heavy: bool = false
 
 const SPEED = 300.0
 
@@ -47,7 +49,8 @@ func _ready() -> void:
 		canvas_layer.hide()
 	else:
 		item_tex.texture = null
-	
+	name_label.text = NetworkManager.peers[player_id]
+
 	if sprite_frame:
 		animated_sprite_2d.sprite_frames = sprite_frame
 	if multiplayer.get_unique_id() == player_id:
@@ -58,7 +61,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	#if not multiplayer.is_server():
 		#return
-	if is_picking_up:
+	if is_picking_up or is_carrying_heavy:
 		return
 	
 	_move_player()
@@ -134,6 +137,10 @@ func request_pickup():
 				else:
 					_update_item_texture.rpc_id(player_id, "")
 				return
+		elif item is ButuragaRelaxatoare:
+			item.server_try_interact(self)
+			print("interacted")
+			return
 
 func item_pickup():
 	_play_pickup_effects.rpc()
@@ -159,3 +166,8 @@ func _update_item_texture(new_item: String) -> void:
 	item_tex.scale = Vector2.ZERO
 	var tween = create_tween()
 	tween.tween_property(item_tex, "scale", Vector2(1, 1), 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+
+@rpc("authority", "call_local", "reliable")
+func set_heavy_carry_state(state: bool) -> void:
+	is_carrying_heavy = state

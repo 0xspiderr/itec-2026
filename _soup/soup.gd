@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 		_trigger_game_over.rpc()
 
 
-func server_receive_ingredient(player: RatController, item_name: String) -> void:
+func server_receive_ingredient(_player: RatController, item_name: String) -> void:
 	if not multiplayer.is_server() or is_game_over: 
 		return
 	
