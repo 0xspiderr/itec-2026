@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://do03p4467dnyq"]
+
+[ext_resource type="Script" uid="uid://xgkeerdb0kaa" path="res://_rat/rat.gd" id="1_1meta"]
+[ext_resource type="SpriteFrames" uid="uid://cpe0b7qnsks6c" path="res://_rat/sprite_anim_resources/rat_variation_2.tres" id="2_5e2gr"]
+[ext_resource type="PackedScene" uid="uid://bquiyipfeqd1c" path="res://_rat/_components/input_component.tscn" id="2_n77cq"]
+[ext_resource type="SpriteFrames" uid="uid://cqx3n6ovknur7" path="res://_rat/sprite_anim_resources/rat_variation_1.tres" id="3_n77cq"]
+[ext_resource type="SpriteFrames" uid="uid://dme4hayoxj766" path="res://_rat/sprite_anim_resources/rat_variation_3.tres" id="4_dwesx"]
+[ext_resource type="SpriteFrames" uid="uid://dthuknug4ko18" path="res://_rat/sprite_anim_resources/rat_variation_4.tres" id="5_ccay7"]
+[ext_resource type="Texture2D" uid="uid://cu33ri3s65d38" path="res://Assets/Pickups/pickup_chanterelle.png" id="6_eh7kd"]
+[ext_resource type="Texture2D" uid="uid://c0jj0edc8d17s" path="res://Assets/Pickups/pickup_wild_leeks.png" id="7_3vrsw"]
+[ext_resource type="Texture2D" uid="uid://dvijotoehyp5y" path="res://Assets/UI/UI.png" id="7_ccay7"]
+[ext_resource type="Texture2D" uid="uid://bu6ivw6s6i4xt" path="res://Assets/Pickups/pickup_frozen_rabbit_leg.png" id="8_6heo1"]
+[ext_resource type="Texture2D" uid="uid://bmissj4motivb" path="res://Assets/Pickups/pickup_turnip.png" id="8_dfxnk"]
+[ext_resource type="Texture2D" uid="uid://cq830jscb2q3h" path="res://Assets/Pickups/pickup_winter_berries.png" id="10_7fbow"]
+[ext_resource type="Texture2D" uid="uid://dtvdbnrowsknh" path="res://Assets/Pickups/pickup_dried_barley.png" id="11_pg4ac"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1meta"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:player_id")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:velocity")
+properties/2/spawn = false
+properties/2/replication_mode = 1
+properties/3/path = NodePath("AnimatedSprite2D:animation")
+properties/3/spawn = false
+properties/3/replication_mode = 2
+properties/4/path = NodePath("AnimatedSprite2D:flip_h")
+properties/4/spawn = false
+properties/4/replication_mode = 2
+properties/5/path = NodePath(".:sprite_frame_index")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+properties/6/path = NodePath(".:picked_items")
+properties/6/spawn = false
+properties/6/replication_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n77cq"]
+radius = 12.0
+height = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dwesx"]
+radius = 34.0147
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6heo1"]
+atlas = ExtResource("7_ccay7")
+region = Rect2(64, 64, 32, 32)
+
+[node name="Rat" type="CharacterBody2D" unique_id=814430971]
+script = ExtResource("1_1meta")
+player_sprite_frames = Array[SpriteFrames]([ExtResource("2_5e2gr"), ExtResource("3_n77cq"), ExtResource("4_dwesx"), ExtResource("5_ccay7")])
+item_textures = Dictionary[String, Texture2D]({
+"dried barley": ExtResource("11_pg4ac"),
+"meat": ExtResource("8_6heo1"),
+"mushroom": ExtResource("6_eh7kd"),
+"turnip": ExtResource("8_dfxnk"),
+"wild leeks": ExtResource("7_3vrsw"),
+"winter berries": ExtResource("10_7fbow")
+})
+
+[node name="ServerSync" type="MultiplayerSynchronizer" parent="." unique_id=1390654973]
+replication_config = SubResource("SceneReplicationConfig_1meta")
+
+[node name="InputComponent" parent="." unique_id=699884673 instance=ExtResource("2_n77cq")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1256338610]
+zoom = Vector2(1.5, 1.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1893417312]
+texture_filter = 1
+sprite_frames = ExtResource("3_n77cq")
+animation = &"idle_hold"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156681356]
+position = Vector2(0, 49)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_n77cq")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=2103028439]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=249934080]
+shape = SubResource("CircleShape2D_dwesx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=907341926]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=150964335]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ItemSlot" type="TextureRect" parent="CanvasLayer/MarginContainer" unique_id=682262173]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_6heo1")
+stretch_mode = 5
+
+[node name="ItemTex" type="TextureRect" parent="CanvasLayer/MarginContainer/ItemSlot" unique_id=1780325156]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_6heo1")
