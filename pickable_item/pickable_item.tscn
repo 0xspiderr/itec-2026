@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ckl8vqyes3cml"]
+
+[ext_resource type="Script" uid="uid://bsv2lskis8b7v" path="res://pickable_item/pickable_item.gd" id="1_6w6i5"]
+[ext_resource type="Texture2D" uid="uid://bydh5cqb6r4py" path="res://icon.svg" id="1_lxtxh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6w6i5"]
+radius = 48.010414
+
+[node name="PickableItem" type="Node2D" unique_id=2025876948]
+script = ExtResource("1_6w6i5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1313488417]
+texture = ExtResource("1_lxtxh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1444202277]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1854040611]
+shape = SubResource("CircleShape2D_6w6i5")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

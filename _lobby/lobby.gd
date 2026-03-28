@@ -14,6 +14,7 @@ func _ready() -> void:
 	if multiplayer.is_server():
 		start_btn.visible = true
 	NetworkManager.update_lobby_ui.connect(_on_lobby_ui_update)
+	_on_lobby_ui_update()
 
 
 func _on_lobby_ui_update() -> void:
@@ -22,6 +23,7 @@ func _on_lobby_ui_update() -> void:
 		var peer_name = NetworkManager.peers.get(id, 1)
 		var new_item = LOBBY_ITEM.instantiate() as LobbyItem
 		new_item.setup(peer_name)
+		print(id)
 		lobby_container.add_child(new_item, true)
 
 

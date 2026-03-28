@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dogckl7huip08"]
+
+[ext_resource type="Script" uid="uid://dov8vw3gec7x1" path="res://_mainMenu/main_menu.gd" id="1_ooen3"]
+
+[node name="MarginContainer" type="MarginContainer" unique_id=582196056]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ooen3")
+
+[node name="menuContainer" type="VBoxContainer" parent="." unique_id=1454454465]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 50
+
+[node name="IPAddres" type="LineEdit" parent="menuContainer" unique_id=711367561]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 26
+text = "127.0.0.1"
+placeholder_text = "IP Addres"
+alignment = 1
+
+[node name="Name" type="LineEdit" parent="menuContainer" unique_id=535329179]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+placeholder_text = "Name"
+alignment = 1
+
+[node name="Connect" type="Button" parent="menuContainer" unique_id=687210997]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Connect"
+
+[node name="HostBtn" type="Button" parent="menuContainer" unique_id=907993549]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Host"
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=629995657]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=687920912]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/TextureRect" unique_id=73861059]
+custom_minimum_size = Vector2(320, 120)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -60.0
+offset_right = 120.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 26
+theme_override_font_sizes/bold_italics_font_size = 26
+theme_override_font_sizes/italics_font_size = 26
+theme_override_font_sizes/mono_font_size = 26
+text = "Not a valid ip addres"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="menuContainer/HostBtn" to="." method="_on_host_btn_pressed"]

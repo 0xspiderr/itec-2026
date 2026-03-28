@@ -10,6 +10,12 @@ script = ExtResource("1_xtfeo")
 _spawnable_scenes = PackedStringArray("uid://do03p4467dnyq")
 spawn_path = NodePath("../Players")
 
+[node name="ItemSpawner" type="MultiplayerSpawner" parent="." unique_id=704228819]
+_spawnable_scenes = PackedStringArray("uid://ckl8vqyes3cml")
+spawn_path = NodePath("../PickableItems")
+
+[node name="PickableItems" type="Node" parent="." unique_id=1090667728]
+
 [node name="Players" type="Node" parent="." unique_id=1849083307]
 
 [node name="SpawnPoints" type="Node" parent="." unique_id=2136069432]
@@ -26,3 +32,6 @@ position = Vector2(123, 157)
 position = Vector2(587, 338)
 scale = Vector2(8.046875, 5.34375)
 texture = ExtResource("1_42i0l")
+
+[node name="ItemSpawnTimer" type="Timer" parent="." unique_id=1399354534]
+wait_time = 5.0
