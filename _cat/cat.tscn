@@ -85,7 +85,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"explode",
-"speed": 5.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -125,6 +125,8 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_7flm6")
 animation = &"explode"
 autoplay = "run"
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152610928]
 position = Vector2(0, 2)
