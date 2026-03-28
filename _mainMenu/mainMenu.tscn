@@ -18,19 +18,24 @@ region_rect = Rect2(0, 1, 64, 63)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -110.0
+offset_right = 40.0
+offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oupfn")
 
 [node name="menuContainer" type="VBoxContainer" parent="." unique_id=1454454465]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 400)
+custom_minimum_size = Vector2(320, 180)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_constants/separation = 50
 
 [node name="Panel" type="Panel" parent="menuContainer" unique_id=908319526]
+texture_filter = 1
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_vertical = 3
@@ -44,15 +49,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -170.0
-offset_right = 110.0
-offset_bottom = 170.0
+offset_left = -49.0
+offset_top = -46.0
+offset_right = 49.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_constants/separation = 50
+theme_override_constants/separation = 8
 
 [node name="IPAddres" type="LineEdit" parent="menuContainer/Panel/menuContainer" unique_id=711367561]
 unique_name_in_owner = true

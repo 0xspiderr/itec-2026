@@ -20,8 +20,8 @@ region_rect = Rect2(0, 96, 64, 32)
 
 [node name="ProgressBar" type="ProgressBar" unique_id=640946887]
 texture_filter = 1
-offset_right = 322.0
-offset_bottom = 43.0
+offset_right = 300.0
+offset_bottom = 20.0
 theme_override_styles/background = SubResource("StyleBoxTexture_prsc4")
 theme_override_styles/fill = SubResource("StyleBoxTexture_3x7sg")
 value = 100.0
