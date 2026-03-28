@@ -16,7 +16,7 @@ const SPEED = 300.0
 # showns only for local player
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 
-@onready var camera_2d: Camera2D = $Camera2D
+@onready var camera_2d: Camera2D = %Camera2D
 @onready var input_component: InputComponent = $InputComponent
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
