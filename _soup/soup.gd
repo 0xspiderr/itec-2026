@@ -17,10 +17,12 @@ var ingredients: Array[String] = []
 
 
 const ITEM_TIME_VALUES: Dictionary = {
-	"winter berries": 5.0,
-	"dried barley": 10.0,
-	"mushroom": 15.0,
-	"wild leeks": 8.0
+	"winter berries": 2.0,
+	"dried barley": 6.0,
+	"mushroom": 8.0,
+	"wild leeks": 6.5,
+	"turnip": 5.0,
+	"meat": 10.0
 }
 
 var base_bubble_y: float = 0.0
