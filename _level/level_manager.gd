@@ -10,6 +10,7 @@ const PICKABLE_ITEM = preload("uid://ckl8vqyes3cml")
 @onready var pickable_items: Node = $PickableItems
 @onready var pickable_spawn_points: Array[Node] = $PickableSpawnPoints.get_children()
 
+
 func _ready() -> void:
 	_spawn_rats()
 	
@@ -55,7 +56,7 @@ func _on_spawn_item() -> void:
 	new_item.position = spawn_point.position
 	
 	# pick random item type
-	var random_type = randi() % 4
+	var random_type = randi() % new_item.ITEM_TEXTURE_NAMES.size()
 	new_item.item_type_index = random_type
 	
 	pickable_items.add_child(new_item, true)

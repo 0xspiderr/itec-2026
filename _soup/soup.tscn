@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cu33ri3s65d38" path="res://Assets/Pickups/pickup_chanterelle.png" id="3_8c1p4"]
 [ext_resource type="Texture2D" uid="uid://dtvdbnrowsknh" path="res://Assets/Pickups/pickup_dried_barley.png" id="4_ld3k3"]
 [ext_resource type="Texture2D" uid="uid://cq830jscb2q3h" path="res://Assets/Pickups/pickup_winter_berries.png" id="5_ld3k3"]
+[ext_resource type="Texture2D" uid="uid://bmissj4motivb" path="res://Assets/Pickups/pickup_turnip.png" id="6_000xh"]
 [ext_resource type="Texture2D" uid="uid://be2tp481vo457" path="res://Assets/UI/speech_bubble.png" id="6_8c1p4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0p4kj"]
@@ -73,10 +74,12 @@ properties/1/spawn = true
 properties/1/replication_mode = 2
 
 [node name="Soup" type="StaticBody2D" unique_id=1186833826]
+z_index = 1
 script = ExtResource("1_fotto")
 item_textures = Dictionary[String, Texture2D]({
 "dried barley": ExtResource("4_ld3k3"),
 "mushroom": ExtResource("3_8c1p4"),
+"turnip": ExtResource("6_000xh"),
 "wild leeks": ExtResource("2_7r22i"),
 "winter berries": ExtResource("5_ld3k3")
 })

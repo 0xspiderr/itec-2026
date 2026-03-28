@@ -6,7 +6,9 @@ const ITEM_TEXTURE_NAMES = [
 	"winter berries",
 	"dried barley",
 	"mushroom",
-	"wild leeks"
+	"wild leeks",
+	"turnip",
+	"meat"
 ]
 
 @export var item_type_index: int = 0:
@@ -31,14 +33,6 @@ func _apply_item_type() -> void:
 	item_name = ITEM_TEXTURE_NAMES[item_type_index]
 
 
-#func _on_area_2d_body_entered(body: Node2D) -> void:
-	#if not multiplayer.is_server():
-		#return
-	#
-	#if body is RatController:
-		#_pickup(body)
-
-
 func server_confirm_pickup(picker: RatController) -> void:
 	if not multiplayer.is_server(): return
 	
@@ -52,7 +46,7 @@ func _play_spawn_animation() -> void:
 	scale = Vector2.ZERO
 	
 	var tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(1.45, 1.45), TWEEN_TIME_SPAWN)\
+	tween.tween_property(self, "scale", Vector2(1.0, 1.0), TWEEN_TIME_SPAWN)\
 		.set_trans(Tween.TRANS_ELASTIC)\
 		.set_ease(Tween.EASE_OUT)
 	
