@@ -48,6 +48,7 @@ animations = [{
 }]
 
 [node name="Level1" type="Node2D" unique_id=1302037982]
+y_sort_enabled = true
 script = ExtResource("1_xtfeo")
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=503721255]
@@ -62,11 +63,25 @@ spawn_path = NodePath("../PickableItems")
 _spawnable_scenes = PackedStringArray("uid://cw1h70len88x6")
 spawn_path = NodePath("../Buturugi")
 
-[node name="PickableItems" type="Node" parent="." unique_id=1090667728]
+[node name="CatSpawner" type="MultiplayerSpawner" parent="." unique_id=385393795]
+_spawnable_scenes = PackedStringArray("uid://bt8rvbp8bgh8w")
+spawn_path = NodePath("../Cats")
 
-[node name="Players" type="Node" parent="." unique_id=1849083307]
+[node name="Players" type="Node2D" parent="." unique_id=195818995]
+unique_name_in_owner = true
+y_sort_enabled = true
 
-[node name="SpawnPoints" type="Node" parent="." unique_id=2136069432]
+[node name="PickableItems" type="Node2D" parent="." unique_id=2106863874]
+
+[node name="CatSpawns" type="Node2D" parent="." unique_id=874701423]
+
+[node name="Right" type="Marker2D" parent="CatSpawns" unique_id=309863449]
+position = Vector2(1695, 0)
+
+[node name="Left" type="Marker2D" parent="CatSpawns" unique_id=817859628]
+position = Vector2(-1551, 0)
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1929648930]
 
 [node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=1585456312]
 position = Vector2(521, 168)
@@ -80,7 +95,7 @@ position = Vector2(123, 348)
 [node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=1968183081]
 position = Vector2(514, 375)
 
-[node name="PickableSpawnPoints" type="Node" parent="." unique_id=156564525]
+[node name="PickableSpawnPoints" type="Node2D" parent="." unique_id=365960356]
 
 [node name="Marker2D" type="Marker2D" parent="PickableSpawnPoints" unique_id=1232301253]
 position = Vector2(164, 0)
@@ -103,7 +118,7 @@ position = Vector2(540, 551)
 [node name="Marker2D7" type="Marker2D" parent="PickableSpawnPoints" unique_id=133077630]
 position = Vector2(793, 398)
 
-[node name="ButurugaSpawnPoints" type="Node" parent="." unique_id=1661857974]
+[node name="ButurugaSpawnPoints" type="Node2D" parent="." unique_id=1471882177]
 
 [node name="Marker2D" type="Marker2D" parent="ButurugaSpawnPoints" unique_id=664749707]
 position = Vector2(449, -213)
@@ -115,6 +130,7 @@ position = Vector2(-462, -290)
 position = Vector2(343, 303)
 
 [node name="Environment" type="Node2D" parent="." unique_id=1130732815]
+z_index = -1
 
 [node name="ColorRect" type="ColorRect" parent="Environment" unique_id=1986677109]
 offset_left = -1117.0
@@ -226,11 +242,13 @@ flip_h = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Houses/StaticBody2D2" unique_id=722618620]
 polygon = PackedVector2Array(130, -136, 142, -189, 236, -202, 272, -177, 300, -124, 198, -92)
 
-[node name="ItemSpawnTimer" type="Timer" parent="." unique_id=1399354534]
-wait_time = 2.0
-
 [node name="Soup" parent="." unique_id=1386634272 instance=ExtResource("3_q4hp6")]
 z_index = 0
+y_sort_enabled = true
+position = Vector2(-41, -19)
+
+[node name="ItemSpawnTimer" type="Timer" parent="." unique_id=1399354534]
+wait_time = 2.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1183914235]
 
@@ -258,4 +276,11 @@ size_flags_vertical = 1
 [node name="ButurugaSpawnTimer" type="Timer" parent="." unique_id=1908935787]
 wait_time = 5.0
 
-[node name="Buturugi" type="Node" parent="." unique_id=1166312365]
+[node name="Buturugi" type="Node2D" parent="." unique_id=1202846112]
+z_index = -1
+y_sort_enabled = true
+
+[node name="Cats" type="Node2D" parent="." unique_id=248003618]
+y_sort_enabled = true
+
+[node name="CatSpawnTimer" type="Timer" parent="." unique_id=987132060]

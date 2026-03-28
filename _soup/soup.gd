@@ -133,5 +133,16 @@ func server_receive_log() -> void:
 	var massive_time_boost = 20.0
 	soup_time += massive_time_boost
 	
-	print("buturuga pe foc ", massive_time_boost, "s | Total: ", soup_time, "s")
+	print("buturuga pe foc ", massive_time_boost, "s total: ", soup_time, "s")
 	_sync_soup_data.rpc(ingredients)
+
+func server_receive_cat_explosion() -> void:
+	if not multiplayer.is_server() or is_game_over: 
+		return
+	
+	var penalty = 15.0
+	soup_time -= penalty
+	if soup_time < 0.0:
+		soup_time = 0.0
+		
+	print("cat exploded: ", penalty, "s remaining: ", soup_time, "s")

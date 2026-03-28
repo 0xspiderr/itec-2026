@@ -2,7 +2,7 @@ class_name LevelManager extends Node2D
 
 
 const RAT = preload("uid://do03p4467dnyq")
-@onready var players: Node = $Players
+@onready var players: Node = %Players
 @onready var spawn_points: Node = $SpawnPoints
 @onready var item_spawn_timer: Timer = $ItemSpawnTimer
 @onready var buturuga_spawn_timer: Timer = $ButurugaSpawnTimer
@@ -14,6 +14,13 @@ const PICKABLE_ITEM = preload("uid://ckl8vqyes3cml")
 @onready var pickable_spawn_points: Array[Node] = $PickableSpawnPoints.get_children()
 @onready var buturuga_spawn_points: Array[Node] = $ButurugaSpawnPoints.get_children()
 
+@onready var cat_spawn_timer: Timer = $CatSpawnTimer
+@onready var cat_spawns: Array[Node] = $CatSpawns.get_children()
+@onready var cats: Node = $Cats
+
+@onready var soup: Soup = $Soup
+const CAT = preload("uid://bt8rvbp8bgh8w")
+
 
 func _ready() -> void:
 	_spawn_rats()
@@ -23,6 +30,22 @@ func _ready() -> void:
 		item_spawn_timer.start()
 		buturuga_spawn_timer.timeout.connect(_on_spawn_buturuga)
 		buturuga_spawn_timer.start()
+		cat_spawn_timer.timeout.connect(_on_cat_spawn_timer)
+		_start_random_cat_timer()
+
+func _start_random_cat_timer() -> void:
+	cat_spawn_timer.wait_time = randf_range(5.0, 5.0)
+	cat_spawn_timer.start()
+
+func _on_cat_spawn_timer() -> void:
+	if not multiplayer.is_server(): return
+	print("spawned cat")
+	var spawn_point = cat_spawns.pick_random()
+	var new_cat = CAT.instantiate() as Cat
+	new_cat.position = spawn_point.position
+	cats.add_child(new_cat, true)
+	new_cat.setup_direction(soup.global_position)
+	_start_random_cat_timer()
 
 
 func _spawn_rats() -> void:
