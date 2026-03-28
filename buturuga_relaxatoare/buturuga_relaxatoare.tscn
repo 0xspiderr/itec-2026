@@ -26,7 +26,7 @@ scale = Vector2(1.4, 1.4)
 texture = ExtResource("2_7gmex")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1534710723]
-position = Vector2(5, 1)
+position = Vector2(5, 8)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_yfyk4")
 
@@ -42,5 +42,5 @@ replication_config = SubResource("SceneReplicationConfig_yfyk4")
 [node name="Area2D" type="Area2D" parent="." unique_id=2008974932]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=477281641]
-position = Vector2(3, 1.5)
+position = Vector2(3, 2)
 shape = SubResource("RectangleShape2D_yfyk4")

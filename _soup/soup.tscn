@@ -60,9 +60,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y8oxa"]
-radius = 66.007576
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8oxa"]
 size = Vector2(151, 146)
 
@@ -93,8 +90,8 @@ animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.36107132
 
-[node name="PhysicsCollision" type="CollisionShape2D" parent="." unique_id=1774775594]
-shape = SubResource("CircleShape2D_y8oxa")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1939173454]
+polygon = PackedVector2Array(-60, 23, -37, 56, 35, 56, 59, 25, 53, -7, -52, -7)
 
 [node name="InteractArea" type="Area2D" parent="." unique_id=956630163]
 

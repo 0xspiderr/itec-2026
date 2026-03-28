@@ -2,7 +2,7 @@ class_name LevelManager extends Node2D
 
 
 const RAT = preload("uid://do03p4467dnyq")
-@onready var players: Node = $Players
+@onready var players: Node = %Players
 @onready var spawn_points: Node = $SpawnPoints
 @onready var item_spawn_timer: Timer = $ItemSpawnTimer
 @onready var buturuga_spawn_timer: Timer = $ButurugaSpawnTimer
