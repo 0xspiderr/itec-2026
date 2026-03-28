@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cvrmu13u4n481" path="res://Assets/Map/tree_frame_map.png" id="3_brrif"]
 [ext_resource type="PackedScene" uid="uid://ddfopkjypbgg1" path="res://_soup/soup.tscn" id="3_q4hp6"]
 [ext_resource type="PackedScene" uid="uid://g3sahwggyswl" path="res://_hud/soup_time_bar.tscn" id="4_7epgt"]
+[ext_resource type="PackedScene" uid="uid://cw1h70len88x6" path="res://buturuga_relaxatoare/buturuga_relaxatoare.tscn" id="4_brrif"]
 
 [node name="Level1" type="Node2D" unique_id=1302037982]
 script = ExtResource("1_xtfeo")
@@ -72,6 +73,9 @@ texture = ExtResource("2_xmt5o")
 [node name="MapFrame" type="Sprite2D" parent="Environment" unique_id=1654388055]
 texture_filter = 1
 texture = ExtResource("3_brrif")
+
+[node name="ButurugaRelaxatoare" parent="Environment" unique_id=621801157 instance=ExtResource("4_brrif")]
+position = Vector2(-174, 0)
 
 [node name="ItemSpawnTimer" type="Timer" parent="." unique_id=1399354534]
 wait_time = 2.0
