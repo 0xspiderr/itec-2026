@@ -12,6 +12,7 @@ class_name RatController extends CharacterBody2D
 @onready var item_tex: TextureRect = $CanvasLayer/MarginContainer/ItemSlot/ItemTex
 @onready var name_label: Label = %NameLabel
 var is_carrying_heavy: bool = false
+var current_buturuga: ButuragaRelaxatoare = null
 
 const SPEED = 300.0
 
@@ -110,6 +111,9 @@ func request_pickup():
 	if not multiplayer.is_server(): return
 	
 	var areas = interaction_area.get_overlapping_areas()
+	if current_buturuga != null:
+		current_buturuga.server_try_interact(self)
+		return
 	
 	for area in areas:
 		var item = area.get_parent()

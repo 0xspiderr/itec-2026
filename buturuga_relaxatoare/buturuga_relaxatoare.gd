@@ -10,6 +10,7 @@ var holder_2: RatController = null
 @onready var right_grab: Marker2D = $RightGrab
 @onready var area_2d: Area2D = $Area2D
 
+
 func _physics_process(_delta: float) -> void:
 	if not multiplayer.is_server(): return
 
@@ -46,7 +47,7 @@ func server_try_interact(player: RatController) -> void:
 		_server_drop_all()
 		if burned_in_pot:
 			queue_free()
-			return
+		return
 
 	var dist_to_left = player.global_position.distance_to(left_grab.global_position)
 	var dist_to_right = player.global_position.distance_to(right_grab.global_position)
@@ -71,3 +72,7 @@ func _server_drop_all() -> void:
 func _set_rat_carry_state(rat: RatController, state: bool) -> void:
 	rat.is_carrying_heavy = state
 	rat.set_heavy_carry_state.rpc(state)
+	if state == true:
+		rat.current_buturuga = self
+	else:
+		rat.current_buturuga = null

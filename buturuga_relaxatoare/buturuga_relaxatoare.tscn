@@ -13,7 +13,7 @@ properties/0/spawn = true
 properties/0/replication_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yfyk4"]
-size = Vector2(77, 23)
+size = Vector2(114, 37)
 
 [node name="ButurugaRelaxatoare" type="CharacterBody2D" unique_id=621801157]
 z_index = 1
@@ -42,5 +42,5 @@ replication_config = SubResource("SceneReplicationConfig_yfyk4")
 [node name="Area2D" type="Area2D" parent="." unique_id=2008974932]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=477281641]
-position = Vector2(0.5, 1.5)
+position = Vector2(3, 1.5)
 shape = SubResource("RectangleShape2D_yfyk4")
