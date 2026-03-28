@@ -34,6 +34,9 @@ properties/6/replication_mode = 2
 radius = 26.0
 height = 130.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dwesx"]
+radius = 63.1981
+
 [node name="Rat" type="CharacterBody2D" unique_id=814430971]
 script = ExtResource("1_1meta")
 player_sprite_frames = Array[SpriteFrames]([ExtResource("2_5e2gr"), ExtResource("3_n77cq"), ExtResource("4_dwesx"), ExtResource("5_ccay7")])
@@ -57,3 +60,8 @@ autoplay = "idle"
 shape = SubResource("CapsuleShape2D_n77cq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=88085821]
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=2103028439]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=249934080]
+shape = SubResource("CircleShape2D_dwesx")

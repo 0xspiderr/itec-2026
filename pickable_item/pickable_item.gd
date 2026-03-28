@@ -31,18 +31,21 @@ func _apply_item_type() -> void:
 	item_name = ITEM_TEXTURE_NAMES[item_type_index]
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if not multiplayer.is_server():
-		return
+#func _on_area_2d_body_entered(body: Node2D) -> void:
+	#if not multiplayer.is_server():
+		#return
+	#
+	#if body is RatController:
+		#_pickup(body)
+
+
+func server_confirm_pickup(picker: RatController) -> void:
+	if not multiplayer.is_server(): return
 	
-	if body is RatController:
-		_pickup(body)
-
-
-func _pickup(body: RatController) -> void:
-	if body.has_method("item_pickup"):
-		body.item_pickup()
-		_squish_and_die.rpc()
+	if picker.has_method("item_pickup"):
+		picker.item_pickup()
+	
+	_squish_and_die.rpc()
 
 
 func _play_spawn_animation() -> void:
