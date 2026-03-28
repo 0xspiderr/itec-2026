@@ -62,9 +62,21 @@ spawn_path = NodePath("../PickableItems")
 _spawnable_scenes = PackedStringArray("uid://cw1h70len88x6")
 spawn_path = NodePath("../Buturugi")
 
+[node name="CatSpawner" type="MultiplayerSpawner" parent="." unique_id=385393795]
+_spawnable_scenes = PackedStringArray("uid://bt8rvbp8bgh8w")
+spawn_path = NodePath("../Cats")
+
 [node name="PickableItems" type="Node" parent="." unique_id=1090667728]
 
 [node name="Players" type="Node" parent="." unique_id=1849083307]
+
+[node name="CatSpawns" type="Node" parent="." unique_id=1605197855]
+
+[node name="Right" type="Marker2D" parent="CatSpawns" unique_id=309863449]
+position = Vector2(1695, 0)
+
+[node name="Left" type="Marker2D" parent="CatSpawns" unique_id=817859628]
+position = Vector2(-1551, 0)
 
 [node name="SpawnPoints" type="Node" parent="." unique_id=2136069432]
 
@@ -231,6 +243,7 @@ wait_time = 2.0
 
 [node name="Soup" parent="." unique_id=1386634272 instance=ExtResource("3_q4hp6")]
 z_index = 0
+position = Vector2(-41, -19)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1183914235]
 
@@ -259,3 +272,7 @@ size_flags_vertical = 1
 wait_time = 5.0
 
 [node name="Buturugi" type="Node" parent="." unique_id=1166312365]
+
+[node name="Cats" type="Node" parent="." unique_id=1776633046]
+
+[node name="CatSpawnTimer" type="Timer" parent="." unique_id=987132060]
