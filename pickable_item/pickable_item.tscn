@@ -6,6 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_6w6i5"]
 radius = 48.010414
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_s2h18"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 0
+
 [node name="PickableItem" type="Node2D" unique_id=2025876948]
 script = ExtResource("1_6w6i5")
 
@@ -16,5 +21,8 @@ texture = ExtResource("1_lxtxh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1854040611]
 shape = SubResource("CircleShape2D_6w6i5")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=9232195]
+replication_config = SubResource("SceneReplicationConfig_s2h18")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

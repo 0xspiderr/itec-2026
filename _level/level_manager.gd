@@ -8,13 +8,15 @@ const RAT = preload("uid://do03p4467dnyq")
 
 const PICKABLE_ITEM = preload("uid://ckl8vqyes3cml")
 @onready var pickable_items: Node = $PickableItems
+@onready var pickable_spawn_points: Array[Node] = $PickableSpawnPoints.get_children()
 
 
 func _ready() -> void:
 	_spawn_rats()
 	
-	item_spawn_timer.timeout.connect(_on_spawn_item)
-	item_spawn_timer.start()
+	if multiplayer.is_server():
+		item_spawn_timer.timeout.connect(_on_spawn_item)
+		item_spawn_timer.start()
 
 
 func _spawn_rats() -> void:
@@ -36,11 +38,41 @@ func _spawn_rats() -> void:
 
 
 # we should add random spawnpoints all over the map for this
+#func _on_spawn_item() -> void:
+	#if not multiplayer.is_server():
+		#return
+	#
+	#var new_item = PICKABLE_ITEM.instantiate() as PickableItem
+	#var spawn_point = pickable_spawn_points
+	#new_item.position = Vector2(1, 1)
+	#new_item.name = "carrot"
+	#pickable_items.add_child(new_item, true)
+
 func _on_spawn_item() -> void:
 	if not multiplayer.is_server():
 		return
 	
+	var available_points = []
+	for spawn_point in pickable_spawn_points:
+		if not _is_position_occupied(spawn_point.position):
+			available_points.append(spawn_point)
+	
+	if available_points.is_empty():
+		print("No available spawn points!")
+		return
+		
+	var spawn_point = available_points.pick_random()
+	
 	var new_item = PICKABLE_ITEM.instantiate() as PickableItem
-	new_item.position = Vector2(1, 1)
-	new_item.name = "carrot"
+	new_item.position = spawn_point.position
 	pickable_items.add_child(new_item, true)
+
+
+func _is_position_occupied(pos: Vector2) -> bool:
+	var occupation_threshold = 10.0 
+	
+	for item in pickable_items.get_children():
+		if item is Node2D:
+			if item.position.distance_to(pos) < occupation_threshold:
+				return true
+	return false
