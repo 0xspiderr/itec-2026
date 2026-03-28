@@ -63,4 +63,4 @@ scale = Vector2(8.046875, 5.34375)
 texture = ExtResource("1_42i0l")
 
 [node name="ItemSpawnTimer" type="Timer" parent="." unique_id=1399354534]
-wait_time = 5.0
+wait_time = 2.0

@@ -10,7 +10,6 @@ const PICKABLE_ITEM = preload("uid://ckl8vqyes3cml")
 @onready var pickable_items: Node = $PickableItems
 @onready var pickable_spawn_points: Array[Node] = $PickableSpawnPoints.get_children()
 
-
 func _ready() -> void:
 	_spawn_rats()
 	
@@ -37,17 +36,6 @@ func _spawn_rats() -> void:
 		players.add_child(new_rat, true)
 
 
-# we should add random spawnpoints all over the map for this
-#func _on_spawn_item() -> void:
-	#if not multiplayer.is_server():
-		#return
-	#
-	#var new_item = PICKABLE_ITEM.instantiate() as PickableItem
-	#var spawn_point = pickable_spawn_points
-	#new_item.position = Vector2(1, 1)
-	#new_item.name = "carrot"
-	#pickable_items.add_child(new_item, true)
-
 func _on_spawn_item() -> void:
 	if not multiplayer.is_server():
 		return
@@ -65,6 +53,11 @@ func _on_spawn_item() -> void:
 	
 	var new_item = PICKABLE_ITEM.instantiate() as PickableItem
 	new_item.position = spawn_point.position
+	
+	# pick random item type
+	var random_type = randi() % 4
+	new_item.item_type_index = random_type
+	
 	pickable_items.add_child(new_item, true)
 
 
