@@ -16,7 +16,6 @@ const SPEED = 300.0
 @onready var input_component: InputComponent = $InputComponent
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var items_cnt: int = 0
 
 const ANIM_MAP = {
 	Vector2.ZERO: &"idle",
@@ -34,6 +33,7 @@ const ANIM_HOLD = {
 }
 
 var is_picking_up: bool = false
+var picked_items: Dictionary = {}
 
 func _ready() -> void:
 	var sprite_frame = player_sprite_frames.get(sprite_frame_index)
@@ -60,7 +60,7 @@ func _move_player() -> void:
 
 func _animate_player() -> void:
 	var dir = input_component.direction
-	if ANIM_MAP.has(dir) and items_cnt == 0:
+	if ANIM_MAP.has(dir) and picked_items.is_empty():
 		animated_sprite_2d.play(ANIM_MAP[dir])
 	elif ANIM_HOLD.has(dir):
 		animated_sprite_2d.play(ANIM_HOLD[dir])
@@ -82,17 +82,25 @@ func request_pickup():
 	for area in areas:
 		var item = area.get_parent()
 		if item is PickableItem:
+			picked_items[item.item_name] = 1
 			item.server_confirm_pickup(self)
+			print(picked_items)
 			return 
+		elif item is Soup:
+			if not picked_items.is_empty():
+				var send_item = picked_items.keys()[0]
+				picked_items.erase(send_item)
+				print(picked_items)
+				item.server_receive_ingredient(self, send_item)
 
 
 func item_pickup():
 	_play_pickup_effects.rpc()
 
+
 @rpc("authority", "call_local", "reliable")
 func _play_pickup_effects():
 	is_picking_up = true
-	# Replace with your actual animation name
 	animated_sprite_2d.play("pickup") 
 	print("PICKED UP")
 	await animated_sprite_2d.animation_finished
