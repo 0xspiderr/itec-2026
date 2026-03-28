@@ -1,30 +1,67 @@
 [gd_scene format=3 uid="uid://do03p4467dnyq"]
 
 [ext_resource type="Script" uid="uid://xgkeerdb0kaa" path="res://_rat/rat.gd" id="1_1meta"]
-[ext_resource type="Texture2D" uid="uid://bydh5cqb6r4py" path="res://icon.svg" id="1_griss"]
+[ext_resource type="SpriteFrames" uid="uid://cpe0b7qnsks6c" path="res://_rat/sprite_anim_resources/rat_variation_2.tres" id="2_5e2gr"]
 [ext_resource type="PackedScene" uid="uid://bquiyipfeqd1c" path="res://_rat/_components/input_component.tscn" id="2_n77cq"]
+[ext_resource type="SpriteFrames" uid="uid://cqx3n6ovknur7" path="res://_rat/sprite_anim_resources/rat_variation_1.tres" id="3_n77cq"]
+[ext_resource type="SpriteFrames" uid="uid://dme4hayoxj766" path="res://_rat/sprite_anim_resources/rat_variation_3.tres" id="4_dwesx"]
+[ext_resource type="SpriteFrames" uid="uid://dthuknug4ko18" path="res://_rat/sprite_anim_resources/rat_variation_4.tres" id="5_ccay7"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1meta"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath(".:player_id")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:velocity")
+properties/2/spawn = false
+properties/2/replication_mode = 1
+properties/3/path = NodePath("AnimatedSprite2D:animation")
+properties/3/spawn = false
+properties/3/replication_mode = 2
+properties/4/path = NodePath("AnimatedSprite2D:flip_h")
+properties/4/spawn = false
+properties/4/replication_mode = 2
+properties/5/path = NodePath(".:sprite_frame_index")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+properties/6/path = NodePath(".:items_cnt")
+properties/6/spawn = true
+properties/6/replication_mode = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1meta"]
-size = Vector2(118, 120)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n77cq"]
+radius = 26.0
+height = 130.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dwesx"]
+radius = 63.1981
 
 [node name="Rat" type="CharacterBody2D" unique_id=814430971]
 script = ExtResource("1_1meta")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1256338610]
-
-[node name="InputComponent" parent="." unique_id=699884673 instance=ExtResource("2_n77cq")]
-unique_name_in_owner = true
+player_sprite_frames = Array[SpriteFrames]([ExtResource("2_5e2gr"), ExtResource("3_n77cq"), ExtResource("4_dwesx"), ExtResource("5_ccay7")])
 
 [node name="ServerSync" type="MultiplayerSynchronizer" parent="." unique_id=1390654973]
 replication_config = SubResource("SceneReplicationConfig_1meta")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1322469895]
-texture = ExtResource("1_griss")
+[node name="InputComponent" parent="." unique_id=699884673 instance=ExtResource("2_n77cq")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1256338610]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1893417312]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_n77cq")
+animation = &"idle_hold"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156681356]
-shape = SubResource("RectangleShape2D_1meta")
+shape = SubResource("CapsuleShape2D_n77cq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=88085821]
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=2103028439]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=249934080]
+shape = SubResource("CircleShape2D_dwesx")

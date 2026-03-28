@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://fjb3x0locqw8" path="res://_rat/_components/input_component.gd" id="1_2ce3q"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2ce3q"]
+properties/0/path = NodePath("InputComponent:direction")
+properties/0/spawn = false
+properties/0/replication_mode = 1
 
 [node name="InputComponent" type="MultiplayerSynchronizer" unique_id=699884673]
 replication_config = SubResource("SceneReplicationConfig_2ce3q")
