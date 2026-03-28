@@ -14,7 +14,13 @@ const SPEED = 300.0
 @onready var input_component: InputComponent = $InputComponent
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @export var player_sprite_frames: Array[SpriteFrames]
-
+const ANIM_MAP = {
+	Vector2.ZERO: &"idle",
+	Vector2.LEFT: &"walk_left",
+	Vector2.RIGHT: &"walk_left", # this will be flipped
+	Vector2.UP: &"walk_up",
+	Vector2.DOWN: &"walk_down"
+}
 
 func _ready() -> void:
 	var sprite_frame = player_sprite_frames.get(sprite_frame_index)
@@ -29,21 +35,21 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	_move_player()
+	_animate_player()
 	move_and_slide()
 
 
 func _move_player() -> void:
-	if input_component.direction == Vector2.ZERO:
-		animated_sprite_2d.play(&"idle")
-	elif input_component.direction == Vector2.LEFT:
-		animated_sprite_2d.flip_h = false
-		animated_sprite_2d.play(&"walk_left")
-	elif input_component.direction == Vector2.RIGHT:
-		animated_sprite_2d.flip_h = true
-		animated_sprite_2d.play(&"walk_left")
-	elif input_component.direction == Vector2.DOWN:
-		animated_sprite_2d.play(&"walk_down")
-	elif input_component.direction == Vector2.UP:
-		animated_sprite_2d.play(&"walk_up")
-	
 	velocity = input_component.direction * SPEED
+
+func _animate_player() -> void:
+	var dir = input_component.direction
+	if ANIM_MAP.has(dir):
+		animated_sprite_2d.play(ANIM_MAP[dir])
+
+	if dir.x != 0:
+		animated_sprite_2d.flip_h = (dir == Vector2.RIGHT)
+
+
+func item_pickup() -> void:
+	print("hello world")
