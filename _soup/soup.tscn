@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cq830jscb2q3h" path="res://Assets/Pickups/pickup_winter_berries.png" id="5_ld3k3"]
 [ext_resource type="Texture2D" uid="uid://bmissj4motivb" path="res://Assets/Pickups/pickup_turnip.png" id="6_000xh"]
 [ext_resource type="Texture2D" uid="uid://be2tp481vo457" path="res://Assets/UI/speech_bubble.png" id="6_8c1p4"]
+[ext_resource type="Texture2D" uid="uid://bu6ivw6s6i4xt" path="res://Assets/Pickups/pickup_frozen_rabbit_leg.png" id="7_htqbx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0p4kj"]
 atlas = ExtResource("2_y8oxa")
@@ -78,6 +79,7 @@ z_index = 1
 script = ExtResource("1_fotto")
 item_textures = Dictionary[String, Texture2D]({
 "dried barley": ExtResource("4_ld3k3"),
+"meat": ExtResource("7_htqbx"),
 "mushroom": ExtResource("3_8c1p4"),
 "turnip": ExtResource("6_000xh"),
 "wild leeks": ExtResource("2_7r22i"),
@@ -108,6 +110,7 @@ position = Vector2(49, -78)
 
 [node name="SpeechBubble" type="Sprite2D" parent="SpeechBubbleSpawn" unique_id=1193881301]
 visible = false
+z_index = 1
 texture_filter = 1
 texture = ExtResource("6_8c1p4")
 

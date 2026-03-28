@@ -1,9 +1,51 @@
 [gd_scene format=3 uid="uid://7tacau4f3hs6"]
 
-[ext_resource type="Texture2D" uid="uid://bydh5cqb6r4py" path="res://icon.svg" id="1_42i0l"]
 [ext_resource type="Script" uid="uid://bcdqsxsl18nyn" path="res://_level/level_manager.gd" id="1_xtfeo"]
+[ext_resource type="Texture2D" uid="uid://delcu2jenefoi" path="res://Assets/Map/map_2_bigger.png" id="2_xmt5o"]
+[ext_resource type="Texture2D" uid="uid://bvfotj7w8khai" path="res://Assets/Map/tree_layer_map_2_bigger.png" id="3_brrif"]
 [ext_resource type="PackedScene" uid="uid://ddfopkjypbgg1" path="res://_soup/soup.tscn" id="3_q4hp6"]
 [ext_resource type="PackedScene" uid="uid://g3sahwggyswl" path="res://_hud/soup_time_bar.tscn" id="4_7epgt"]
+[ext_resource type="Texture2D" uid="uid://eubsoki7vsy5" path="res://Assets/Environment_objects/Houses/empty_house.png" id="4_brrif"]
+[ext_resource type="Texture2D" uid="uid://d1qwrtklf4pp8" path="res://Assets/Environment_objects/Houses/house_with_baby_rats.png" id="5_7q5q5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmt5o"]
+size = Vector2(215, 2534)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk5x0"]
+atlas = ExtResource("5_7q5q5")
+region = Rect2(0, 0, 142, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7chpt"]
+atlas = ExtResource("5_7q5q5")
+region = Rect2(142, 0, 142, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cd7e"]
+atlas = ExtResource("5_7q5q5")
+region = Rect2(284, 0, 142, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bujui"]
+atlas = ExtResource("5_7q5q5")
+region = Rect2(426, 0, 142, 123)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v2e8c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk5x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7chpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cd7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bujui")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Level1" type="Node2D" unique_id=1302037982]
 script = ExtResource("1_xtfeo")
@@ -15,6 +57,10 @@ spawn_path = NodePath("../Players")
 [node name="ItemSpawner" type="MultiplayerSpawner" parent="." unique_id=704228819]
 _spawnable_scenes = PackedStringArray("uid://ckl8vqyes3cml")
 spawn_path = NodePath("../PickableItems")
+
+[node name="ButurugaSpawner" type="MultiplayerSpawner" parent="." unique_id=2085532258]
+_spawnable_scenes = PackedStringArray("uid://cw1h70len88x6")
+spawn_path = NodePath("../Buturugi")
 
 [node name="PickableItems" type="Node" parent="." unique_id=1090667728]
 
@@ -57,12 +103,128 @@ position = Vector2(540, 551)
 [node name="Marker2D7" type="Marker2D" parent="PickableSpawnPoints" unique_id=133077630]
 position = Vector2(793, 398)
 
+[node name="ButurugaSpawnPoints" type="Node" parent="." unique_id=1661857974]
+
+[node name="Marker2D" type="Marker2D" parent="ButurugaSpawnPoints" unique_id=664749707]
+position = Vector2(449, -213)
+
+[node name="Marker2D2" type="Marker2D" parent="ButurugaSpawnPoints" unique_id=2052655702]
+position = Vector2(-462, -290)
+
+[node name="Marker2D3" type="Marker2D" parent="ButurugaSpawnPoints" unique_id=463184829]
+position = Vector2(343, 303)
+
 [node name="Environment" type="Node2D" parent="." unique_id=1130732815]
 
+[node name="ColorRect" type="ColorRect" parent="Environment" unique_id=1986677109]
+offset_left = -1117.0
+offset_top = -945.0
+offset_right = 1112.0
+offset_bottom = 1132.0
+
 [node name="Ground" type="Sprite2D" parent="Environment" unique_id=717154542]
-position = Vector2(587, 338)
-scale = Vector2(8.046875, 5.34375)
-texture = ExtResource("1_42i0l")
+texture_filter = 1
+texture = ExtResource("2_xmt5o")
+
+[node name="MapFrame" type="Sprite2D" parent="Environment" unique_id=1654388055]
+texture_filter = 1
+texture = ExtResource("3_brrif")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment" unique_id=1965485074]
+position = Vector2(-1398, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D" unique_id=2085311281]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Environment" unique_id=1242272136]
+position = Vector2(63.000015, -942)
+rotation = 1.5707964
+scale = Vector2(1, 1.2800009)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D3" unique_id=1592168377]
+position = Vector2(69, 42.96873)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Environment" unique_id=762600743]
+position = Vector2(50.000004, 939.00006)
+rotation = 1.5620697
+scale = Vector2(1, 1.2800009)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D4" unique_id=1523995085]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Environment" unique_id=2064296217]
+position = Vector2(1211.9999, 772.00006)
+rotation = 0.7853982
+scale = Vector2(1, 0.48000056)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D5" unique_id=621742185]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Environment" unique_id=1939976688]
+position = Vector2(-1150.0001, -643.00006)
+rotation = 0.7853982
+scale = Vector2(1, 0.48000056)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D6" unique_id=1308043359]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Environment" unique_id=1892521669]
+position = Vector2(-962.9999, 715.99994)
+rotation = 2.268928
+scale = Vector2(1, 0.48000056)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D7" unique_id=1431881714]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Environment" unique_id=1609615446]
+position = Vector2(1233.9999, -694.99994)
+rotation = 2.268928
+scale = Vector2(1, 0.48000056)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D8" unique_id=1940524590]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Environment" unique_id=836430823]
+position = Vector2(1471, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D2" unique_id=2125023564]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="Houses" type="Node2D" parent="Environment" unique_id=248064945]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Houses" unique_id=9571752]
+z_index = 1
+texture_filter = 1
+position = Vector2(-282, -130)
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Houses/StaticBody2D" unique_id=1723869165]
+texture = ExtResource("4_brrif")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Houses/StaticBody2D" unique_id=734932733]
+polygon = PackedVector2Array(-84, 33, 19, 75, 103, 17, 60, -22, -51, -11)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Environment/Houses" unique_id=1480990287]
+z_index = 1
+texture_filter = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Environment/Houses/StaticBody2D2" unique_id=1164175461]
+position = Vector2(213, -163)
+sprite_frames = SubResource("SpriteFrames_v2e8c")
+autoplay = "default"
+frame = 2
+frame_progress = 0.87153286
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Environment/Houses/StaticBody2D2" unique_id=722618620]
+polygon = PackedVector2Array(130, -136, 142, -189, 236, -202, 272, -177, 300, -124, 198, -92)
 
 [node name="ItemSpawnTimer" type="Timer" parent="." unique_id=1399354534]
 wait_time = 2.0
@@ -77,8 +239,9 @@ texture_filter = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -83.0
-offset_right = 785.0
+offset_top = -66.600006
+offset_right = 309.0
+offset_bottom = -16.600006
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -91,3 +254,8 @@ theme_override_constants/margin_bottom = 15
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
+
+[node name="ButurugaSpawnTimer" type="Timer" parent="." unique_id=1908935787]
+wait_time = 5.0
+
+[node name="Buturugi" type="Node" parent="." unique_id=1166312365]

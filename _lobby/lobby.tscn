@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dlto07yleoj1b"]
 
 [ext_resource type="Script" uid="uid://yitpqaigpqvx" path="res://_lobby/lobby.gd" id="1_fuoyk"]
+[ext_resource type="Theme" uid="uid://dvnm8f75jaivf" path="res://theme/menu_ui.tres" id="1_w4r5k"]
 [ext_resource type="FontFile" uid="uid://daanan4q0ggpn" path="res://font/yoster.ttf" id="2_kxvj5"]
 
 [node name="Lobby" type="Control" unique_id=1552650006]
@@ -10,41 +11,68 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_w4r5k")
 script = ExtResource("1_fuoyk")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=724715459]
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=394125248]
+clip_contents = true
+custom_minimum_size = Vector2(120, 240)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -37.5
-offset_top = -20.0
-offset_right = 37.5
-offset_bottom = 20.0
+offset_top = -40.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=689320115]
+[node name="Panel" type="Panel" parent="VBoxContainer2" unique_id=711762040]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 240)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2/Panel" unique_id=1884340851]
+custom_minimum_size = Vector2(80, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -100.0
+offset_right = 43.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="VBoxContainer2/Panel/VBoxContainer2" unique_id=689320115]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_kxvj5")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 16
 text = "Lobby list"
 
-[node name="LobbyContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1896012179]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/Panel/VBoxContainer2" unique_id=724715459]
+custom_minimum_size = Vector2(60, 120)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="LobbyContainer" type="VBoxContainer" parent="VBoxContainer2/Panel/VBoxContainer2/VBoxContainer" unique_id=1896012179]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="StartBtn" type="Button" parent="VBoxContainer" unique_id=1968813758]
+[node name="StartBtn" type="Button" parent="VBoxContainer2/Panel/VBoxContainer2" unique_id=1968813758]
 unique_name_in_owner = true
 visible = false
+custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_kxvj5")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 8
 text = "Start game"
 
-[connection signal="pressed" from="VBoxContainer/StartBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Panel/VBoxContainer2/StartBtn" to="." method="_on_start_btn_pressed"]

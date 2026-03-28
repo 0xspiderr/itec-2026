@@ -1,0 +1,148 @@
+[gd_resource type="Theme" format=3 uid="uid://dvnm8f75jaivf"]
+
+[ext_resource type="FontFile" uid="uid://daanan4q0ggpn" path="res://font/yoster.ttf" id="1_byi4s"]
+[ext_resource type="StyleBox" uid="uid://ce80thplwkdgn" path="res://theme/bt_norm.tres" id="2_jdosu"]
+[ext_resource type="StyleBox" uid="uid://ddg0e02pumwat" path="res://theme/bt_pressed.tres" id="3_hcxrx"]
+[ext_resource type="Texture2D" uid="uid://dvijotoehyp5y" path="res://Assets/UI/UI.png" id="4_hcxrx"]
+[ext_resource type="StyleBox" uid="uid://bjut3u2yj370c" path="res://theme/text_box.tres" id="4_m3wsm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_etixa"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m3wsm"]
+
+[sub_resource type="DPITexture" id="DPITexture_hcxrx"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#fff\" fill-opacity=\".75\" d=\"m1 3 2-2 5 5 5-5 2 2-5 5 5 5-2 2-5-5-5 5-2-2 5-5z\"/></svg>
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvtau"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m3wsm"]
+texture = ExtResource("4_hcxrx")
+texture_margin_left = 18.0
+texture_margin_top = 12.0
+texture_margin_right = 14.0
+texture_margin_bottom = 13.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="DPITexture" id="DPITexture_buwjd"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"8\"><circle cx=\"4\" cy=\"4\" r=\"1.5\" fill=\"#b2b2b2\" fill-opacity=\".25\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_kpqru"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"8\"><path fill=\"#b2b2b2\" fill-opacity=\".25\" d=\"M6 0v8h2V0zM1 0a1 1 0 0 0-.693 1.705L2.6 3.998.307 6.291A1 1 0 0 0 1.72 7.705l3-3a1 1 0 0 0 0-1.414l-3-3A1 1 0 0 0 1 0z\"/></svg>
+"
+
+[resource]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.26666668, 0.26666668, 0.26666668, 1)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
+Button/colors/font_hover_pressed_color = Color(0.53333336, 0.53333336, 0.53333336, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_byi4s")
+Button/styles/disabled = ExtResource("3_hcxrx")
+Button/styles/focus = ExtResource("2_jdosu")
+Button/styles/hover = ExtResource("2_jdosu")
+Button/styles/hover_pressed = ExtResource("3_hcxrx")
+Button/styles/normal = ExtResource("2_jdosu")
+Button/styles/pressed = ExtResource("3_hcxrx")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 1
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_byi4s")
+Label/styles/focus = SubResource("StyleBoxFlat_etixa")
+Label/styles/normal = SubResource("StyleBoxEmpty_m3wsm")
+LineEdit/colors/caret_color = Color(0.95, 0.95, 0.95, 1)
+LineEdit/colors/clear_button_color = Color(0.875, 0.875, 0.875, 1)
+LineEdit/colors/clear_button_color_pressed = Color(1, 1, 1, 1)
+LineEdit/colors/font_color = Color(0.27058825, 0.15686275, 0.23529412, 1)
+LineEdit/colors/font_outline_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_placeholder_color = Color(0.27058825, 0.15686275, 0.23529412, 1)
+LineEdit/colors/font_selected_color = Color(1, 1, 1, 1)
+LineEdit/colors/font_uneditable_color = Color(0.875, 0.875, 0.875, 0.5)
+LineEdit/colors/selection_color = Color(0.5, 0.5, 0.5, 1)
+LineEdit/constants/caret_width = 1
+LineEdit/constants/minimum_character_width = 4
+LineEdit/constants/outline_size = 0
+LineEdit/font_sizes/font_size = 16
+LineEdit/fonts/font = ExtResource("1_byi4s")
+LineEdit/icons/clear = SubResource("DPITexture_hcxrx")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_etixa")
+LineEdit/styles/normal = ExtResource("4_m3wsm")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_jvtau")
+Panel/styles/panel = SubResource("StyleBoxTexture_m3wsm")
+TextEdit/colors/background_color = Color(0, 0, 0, 0)
+TextEdit/colors/caret_background_color = Color(0, 0, 0, 1)
+TextEdit/colors/caret_color = Color(0.875, 0.875, 0.875, 1)
+TextEdit/colors/current_line_color = Color(0.25, 0.25, 0.26, 0.8)
+TextEdit/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+TextEdit/colors/font_outline_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_placeholder_color = Color(0.875, 0.875, 0.875, 0.6)
+TextEdit/colors/font_readonly_color = Color(0.875, 0.875, 0.875, 0.5)
+TextEdit/colors/font_selected_color = Color(0, 0, 0, 0)
+TextEdit/colors/search_result_border_color = Color(0.3, 0.3, 0.3, 0.4)
+TextEdit/colors/search_result_color = Color(0.3, 0.3, 0.3, 1)
+TextEdit/colors/selection_color = Color(0.5, 0.5, 0.5, 1)
+TextEdit/colors/word_highlighted_color = Color(0.5, 0.5, 0.5, 0.25)
+TextEdit/constants/caret_width = 1
+TextEdit/constants/line_spacing = 4
+TextEdit/constants/outline_size = 0
+TextEdit/constants/wrap_offset = 10
+TextEdit/font_sizes/font_size = 16
+TextEdit/fonts/font = ExtResource("1_byi4s")
+TextEdit/icons/space = SubResource("DPITexture_buwjd")
+TextEdit/icons/tab = SubResource("DPITexture_kpqru")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_etixa")
+TextEdit/styles/normal = ExtResource("4_m3wsm")
+TextEdit/styles/read_only = SubResource("StyleBoxFlat_jvtau")

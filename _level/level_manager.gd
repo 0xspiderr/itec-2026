@@ -5,10 +5,14 @@ const RAT = preload("uid://do03p4467dnyq")
 @onready var players: Node = $Players
 @onready var spawn_points: Node = $SpawnPoints
 @onready var item_spawn_timer: Timer = $ItemSpawnTimer
+@onready var buturuga_spawn_timer: Timer = $ButurugaSpawnTimer
 
+const BUTURUGA_RELAXATOARE = preload("uid://cw1h70len88x6")
 const PICKABLE_ITEM = preload("uid://ckl8vqyes3cml")
 @onready var pickable_items: Node = $PickableItems
+@onready var buturugi: Node = $Buturugi
 @onready var pickable_spawn_points: Array[Node] = $PickableSpawnPoints.get_children()
+@onready var buturuga_spawn_points: Array[Node] = $ButurugaSpawnPoints.get_children()
 
 
 func _ready() -> void:
@@ -17,6 +21,8 @@ func _ready() -> void:
 	if multiplayer.is_server():
 		item_spawn_timer.timeout.connect(_on_spawn_item)
 		item_spawn_timer.start()
+		buturuga_spawn_timer.timeout.connect(_on_spawn_buturuga)
+		buturuga_spawn_timer.start()
 
 
 func _spawn_rats() -> void:
@@ -68,5 +74,33 @@ func _is_position_occupied(pos: Vector2) -> bool:
 	for item in pickable_items.get_children():
 		if item is Node2D:
 			if item.position.distance_to(pos) < occupation_threshold:
+				return true
+	return false
+
+
+func _on_spawn_buturuga() -> void:
+	if not multiplayer.is_server():
+		return    
+	var available_points = []
+	for spawn_point in buturuga_spawn_points:
+		if not _is_log_position_occupied(spawn_point.position):
+			available_points.append(spawn_point)
+			
+	if available_points.is_empty():
+		print("buturugi full")
+		return
+		
+	var spawn_point = available_points.pick_random()
+	var new_log = BUTURUGA_RELAXATOARE.instantiate() as ButuragaRelaxatoare
+	new_log.position = spawn_point.position
+	buturugi.add_child(new_log, true)
+
+
+func _is_log_position_occupied(pos: Vector2) -> bool:
+	var occupation_threshold = 20.0
+	
+	for log_node in buturugi.get_children():
+		if log_node is ButuragaRelaxatoare:
+			if log_node.position.distance_to(pos) < occupation_threshold:
 				return true
 	return false

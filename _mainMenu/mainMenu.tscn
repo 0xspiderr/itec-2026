@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dogckl7huip08"]
 
+[ext_resource type="Theme" uid="uid://dvnm8f75jaivf" path="res://theme/menu_ui.tres" id="1_iqnoj"]
 [ext_resource type="Script" uid="uid://dov8vw3gec7x1" path="res://_mainMenu/main_menu.gd" id="1_oupfn"]
 [ext_resource type="FontFile" uid="uid://daanan4q0ggpn" path="res://font/yoster.ttf" id="2_b531r"]
 [ext_resource type="Texture2D" uid="uid://dvijotoehyp5y" path="res://Assets/UI/UI.png" id="2_oupfn"]
@@ -20,21 +21,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_iqnoj")
 script = ExtResource("1_oupfn")
 
 [node name="menuContainer" type="VBoxContainer" parent="." unique_id=1454454465]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 400)
+custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_constants/separation = 50
 
 [node name="Panel" type="Panel" parent="menuContainer" unique_id=908319526]
+texture_filter = 1
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_oupfn")
 
 [node name="menuContainer" type="VBoxContainer" parent="menuContainer/Panel" unique_id=222914705]
 custom_minimum_size = Vector2(12, 12)
@@ -44,15 +46,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -170.0
-offset_right = 110.0
-offset_bottom = 170.0
+offset_left = -49.0
+offset_top = -46.0
+offset_right = 49.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_constants/separation = 50
+theme_override_constants/separation = 8
 
 [node name="IPAddres" type="LineEdit" parent="menuContainer/Panel/menuContainer" unique_id=711367561]
 unique_name_in_owner = true
@@ -100,28 +102,50 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=687920912]
+[node name="menuContainer2" type="VBoxContainer" parent="CenterContainer" unique_id=48608605]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 50
 
-[node name="ErrorRichTextLabel" type="RichTextLabel" parent="CenterContainer/TextureRect" unique_id=73861059]
-custom_minimum_size = Vector2(320, 120)
+[node name="Panel" type="Panel" parent="CenterContainer/menuContainer2" unique_id=1007442380]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxTexture_oupfn")
+
+[node name="menuContainer" type="VBoxContainer" parent="CenterContainer/menuContainer2/Panel" unique_id=680520392]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -60.0
-offset_right = 120.0
-offset_bottom = 60.0
+offset_left = -60.0
+offset_top = -20.0
+offset_right = 60.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 26
-theme_override_font_sizes/bold_font_size = 26
-theme_override_font_sizes/bold_italics_font_size = 26
-theme_override_font_sizes/italics_font_size = 26
-theme_override_font_sizes/mono_font_size = 26
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="ErrorRichTextLabel" type="RichTextLabel" parent="CenterContainer/menuContainer2/Panel/menuContainer" unique_id=73861059]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
 text = "Not a valid ip addres"
 fit_content = true
 horizontal_alignment = 1
