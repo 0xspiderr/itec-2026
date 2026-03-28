@@ -8,15 +8,27 @@ var is_exploding: bool = false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Hitbox
 
-func setup_direction(target_pos: Vector2) -> void:
-	# Calculates a perfect straight line to the pot
-	direction = global_position.direction_to(target_pos)
-	_update_visuals.rpc(direction.x < 0)
+@export var sync_anim: String = "run":
+	set(value):
+		sync_anim = value
+		if animated_sprite:
+			animated_sprite.play(sync_anim)
 
-@rpc("authority", "call_local", "reliable")
-func _update_visuals(flip: bool) -> void:
-	animated_sprite.flip_h = flip
-	animated_sprite.play("run")
+@export var sync_flip: bool = false:
+	set(value):
+		sync_flip = value
+		if animated_sprite:
+			animated_sprite.flip_h = sync_flip
+
+func _ready() -> void:
+	if animated_sprite:
+		animated_sprite.play(sync_anim)
+		animated_sprite.flip_h = sync_flip
+
+func setup_direction(target_pos: Vector2) -> void:
+	direction = global_position.direction_to(target_pos)
+	sync_flip = (direction.x < 0)
+	sync_anim = "run"
 
 func _physics_process(_delta: float) -> void:
 	if not multiplayer.is_server() or is_exploding:
@@ -30,7 +42,7 @@ func _check_collisions() -> void:
 	var areas = hitbox.get_overlapping_areas()
 	for area in areas:
 		var target = area.get_parent()
-
+		
 		if target is Soup and not is_retreating:
 			_explode(target)
 			return
@@ -40,23 +52,19 @@ func _check_collisions() -> void:
 
 func _explode(pot: Soup) -> void:
 	is_exploding = true
-	pot.server_receive_cat_explosion()
-	_play_explode_animation.rpc()
-
-func _retreat() -> void:
-	is_retreating = true
-	direction = -direction
-	_update_visuals.rpc(direction.x < 0)
+	pot.server_receive_cat_explosion() 
 	
-	await get_tree().create_timer(4.0).timeout
+	sync_anim = "explode"
+	
+	await animated_sprite.animation_finished
 	if is_inside_tree():
 		queue_free()
 
-@rpc("authority", "call_local", "reliable")
-func _play_explode_animation() -> void:
-	is_exploding = true
-	animated_sprite.play("explode")
-	await animated_sprite.animation_finished
+func _retreat() -> void:
+	is_retreating = true
+	direction = -direction 
+	sync_flip = (direction.x < 0) # Automatically flips the sprite for everyone
 	
-	if multiplayer.is_server() and is_inside_tree():
+	await get_tree().create_timer(5.0).timeout
+	if is_inside_tree():
 		queue_free()

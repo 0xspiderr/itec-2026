@@ -114,6 +114,17 @@ size = Vector2(86, 42)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lj4ao"]
 size = Vector2(96, 52)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5ab5e"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:sync_flip")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:sync_anim")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
 [node name="Cat" type="CharacterBody2D" unique_id=1355514331]
 collision_layer = 4
 collision_mask = 0
@@ -123,10 +134,8 @@ script = ExtResource("1_0chiy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=616330821]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_7flm6")
-animation = &"explode"
+animation = &"run"
 autoplay = "run"
-frame = 7
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152610928]
 position = Vector2(0, 2)
@@ -138,3 +147,6 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=696317269]
 position = Vector2(-2, 5)
 shape = SubResource("RectangleShape2D_lj4ao")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=826556006]
+replication_config = SubResource("SceneReplicationConfig_5ab5e")
