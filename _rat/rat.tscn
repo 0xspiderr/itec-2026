@@ -26,6 +26,9 @@ properties/4/replication_mode = 2
 properties/5/path = NodePath(".:sprite_frame_index")
 properties/5/spawn = true
 properties/5/replication_mode = 2
+properties/6/path = NodePath(".:items_cnt")
+properties/6/spawn = true
+properties/6/replication_mode = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n77cq"]
 radius = 26.0
@@ -47,7 +50,7 @@ unique_name_in_owner = true
 texture_filter = 1
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("3_n77cq")
-animation = &"idle"
+animation = &"idle_hold"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156681356]

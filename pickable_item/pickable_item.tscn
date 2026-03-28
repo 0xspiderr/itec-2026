@@ -19,7 +19,7 @@ properties/1/replication_mode = 0
 
 [node name="PickableItem" type="Node2D" unique_id=2025876948]
 script = ExtResource("1_6w6i5")
-item_textures = Array[CompressedTexture2D]([ExtResource("2_rxv7r"), ExtResource("3_ffplj"), ExtResource("4_dgsth"), ExtResource("5_taee6")])
+item_textures = Array[Texture2D]([ExtResource("2_rxv7r"), ExtResource("3_ffplj"), ExtResource("4_dgsth"), ExtResource("5_taee6")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1313488417]
 texture_filter = 1
