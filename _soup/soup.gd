@@ -124,4 +124,14 @@ func _hover_bubble() -> void:
 func _update_progress_bar() -> void:
 	if progress_bar:
 		progress_bar.value = soup_time
-		
+
+
+func server_receive_log() -> void:
+	if not multiplayer.is_server() or is_game_over: 
+		return
+	
+	var massive_time_boost = 20.0
+	soup_time += massive_time_boost
+	
+	print("buturuga pe foc ", massive_time_boost, "s | Total: ", soup_time, "s")
+	_sync_soup_data.rpc(ingredients)

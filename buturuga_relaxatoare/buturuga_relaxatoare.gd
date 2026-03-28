@@ -8,6 +8,7 @@ var holder_2: RatController = null
 
 @onready var left_grab: Marker2D = $LeftGrab
 @onready var right_grab: Marker2D = $RightGrab
+@onready var area_2d: Area2D = $Area2D
 
 func _physics_process(_delta: float) -> void:
 	if not multiplayer.is_server(): return
@@ -34,15 +35,30 @@ func server_try_interact(player: RatController) -> void:
 	if not multiplayer.is_server(): return
 
 	if player == holder_1 or player == holder_2:
+		var overlapping_areas = area_2d.get_overlapping_areas()
+		var burned_in_pot = false
+		for area in overlapping_areas:
+			var target = area.get_parent()
+			if target is Soup:
+				target.server_receive_log()
+				burned_in_pot = true
+				break
 		_server_drop_all()
-		return
+		if burned_in_pot:
+			queue_free()
+			return
 
-	if holder_1 == null:
-		holder_1 = player
-		_set_rat_carry_state(holder_1, true)
-	elif holder_2 == null:
-		holder_2 = player
-		_set_rat_carry_state(holder_2, true)
+	var dist_to_left = player.global_position.distance_to(left_grab.global_position)
+	var dist_to_right = player.global_position.distance_to(right_grab.global_position)
+
+	if dist_to_left < dist_to_right:
+		if holder_1 == null:
+			holder_1 = player
+			_set_rat_carry_state(holder_1, true)
+	else:
+		if holder_2 == null:
+			holder_2 = player
+			_set_rat_carry_state(holder_2, true)
 
 func _server_drop_all() -> void:
 	if holder_1 != null:
