@@ -31,11 +31,11 @@ properties/6/spawn = true
 properties/6/replication_mode = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n77cq"]
-radius = 26.0
-height = 130.0
+radius = 18.0
+height = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwesx"]
-radius = 63.1981
+radius = 71.02816
 
 [node name="Rat" type="CharacterBody2D" unique_id=814430971]
 script = ExtResource("1_1meta")
@@ -57,6 +57,8 @@ animation = &"idle_hold"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156681356]
+position = Vector2(0, 49)
+rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_n77cq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=88085821]

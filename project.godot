@@ -29,6 +29,10 @@ folder_colors={
 "res://_rat/": "red"
 }
 
+[gui]
+
+theme/custom_font="uid://daanan4q0ggpn"
+
 [input]
 
 left={
