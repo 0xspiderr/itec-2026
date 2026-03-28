@@ -5,6 +5,17 @@ class_name Soup extends Node2D
 var is_game_over: bool = false
 var ingredients: Array[String] = []
 
+@export var item_textures: Dictionary[String, Texture2D]
+@export var request_item: String = "":
+	set(req):
+		request_item = req
+		_update_bubble_visuals()
+
+@onready var speech_bubble: Sprite2D = $SpeechBubbleSpawn/SpeechBubble
+@onready var bubble_item: Sprite2D = $SpeechBubbleSpawn/SpeechBubble/BubbleItem
+
+
+
 const ITEM_TIME_VALUES: Dictionary = {
 	"winter berries": 5.0,
 	"dried barley": 10.0,
@@ -12,12 +23,22 @@ const ITEM_TIME_VALUES: Dictionary = {
 	"wild leeks": 8.0
 }
 
+var base_bubble_y: float = 0.0
+var hover_time: float = 0.0
+const HOVER_AMPLITUDE: float = 8.0
+const HOVER_SPEED: float = 2.
 
 func _ready() -> void:
+	base_bubble_y = speech_bubble.position.y
 	soup_time = starting_time
+	
+	if multiplayer.is_server():
+		_pick_new_request()
 
 
 func _process(delta: float) -> void:
+	_hover_bubble()
+	
 	if not multiplayer.is_server() or is_game_over:
 		return
 	
@@ -36,7 +57,19 @@ func server_receive_ingredient(player: RatController, item_name: String) -> void
 	ingredients.append(item_name)
 	
 	var time_added = ITEM_TIME_VALUES.get(item_name, 5.0)
-	soup_time += time_added
+	if item_name == request_item:
+		print("bonus time")
+		soup_time += time_added + 5.0 # give a 5 second bonus for the right item
+		request_item = ""
+		
+		await get_tree().create_timer(0.5).timeout
+		_pick_new_request() # pick the next item
+	else:
+		soup_time += time_added # just normal time if it's the wrong item
+		request_item = ""
+		
+		await get_tree().create_timer(0.5).timeout
+		_pick_new_request()
 	
 	print("soup received: ", item_name, " added: ", time_added, "s total: ", soup_time, "s")
 	
@@ -46,10 +79,38 @@ func server_receive_ingredient(player: RatController, item_name: String) -> void
 @rpc("authority", "call_local", "reliable")
 func _sync_soup_data(synced_ingredients: Array) -> void:
 	ingredients = synced_ingredients
-	# Visuals: Play a happy "splash" or "bubble" animation here
+
 
 @rpc("authority", "call_local", "reliable")
 func _trigger_game_over() -> void:
 	is_game_over = true
 	print("game over")
-	
+
+
+func _pick_new_request() -> void:
+	var item_names = ITEM_TIME_VALUES.keys()
+	var random_index = randi() % item_names.size()
+	request_item = item_names[random_index]
+
+
+func _update_bubble_visuals() -> void:
+	# hide the bubble if there is no request or the game is over
+	if request_item == "":
+		var tween = create_tween()
+		tween.tween_property(speech_bubble, "scale", Vector2.ZERO, 0.2)\
+		.set_trans(Tween.TRANS_BACK)\
+		.set_ease(Tween.EASE_IN)
+	else:
+		if item_textures.has(request_item):
+			bubble_item.texture = item_textures[request_item]
+		speech_bubble.show()
+		var tween = create_tween()
+		tween.tween_property(speech_bubble, "scale", Vector2(1.0, 1.0), 0.3)\
+			.set_trans(Tween.TRANS_BACK)\
+			.set_ease(Tween.EASE_OUT)
+
+
+func _hover_bubble() -> void:
+	hover_time += get_process_delta_time()
+	var y_offset = sin(hover_time * HOVER_SPEED) * HOVER_AMPLITUDE
+	speech_bubble.position.y = base_bubble_y + y_offset

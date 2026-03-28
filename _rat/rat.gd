@@ -92,7 +92,7 @@ func request_pickup():
 				picked_items.erase(send_item)
 				print(picked_items)
 				item.server_receive_ingredient(self, send_item)
-
+				return
 
 func item_pickup():
 	_play_pickup_effects.rpc()

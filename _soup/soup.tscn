@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://ddfopkjypbgg1"]
 
 [ext_resource type="Script" uid="uid://dt8uqxhe175fw" path="res://_soup/soup.gd" id="1_fotto"]
+[ext_resource type="Texture2D" uid="uid://c0jj0edc8d17s" path="res://Assets/Pickups/pickup_wild_leeks.png" id="2_7r22i"]
 [ext_resource type="Texture2D" uid="uid://db8r6417bksb8" path="res://Assets/Oala/cazan.png" id="2_y8oxa"]
+[ext_resource type="Texture2D" uid="uid://cu33ri3s65d38" path="res://Assets/Pickups/pickup_chanterelle.png" id="3_8c1p4"]
+[ext_resource type="Texture2D" uid="uid://dtvdbnrowsknh" path="res://Assets/Pickups/pickup_dried_barley.png" id="4_ld3k3"]
+[ext_resource type="Texture2D" uid="uid://be2tp481vo457" path="res://Assets/UI/speech_bubble.png" id="6_8c1p4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0p4kj"]
 atlas = ExtResource("2_y8oxa")
@@ -63,16 +67,24 @@ size = Vector2(179, 154)
 properties/0/path = NodePath(".:soup_time")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath(".:request_item")
+properties/1/spawn = true
+properties/1/replication_mode = 2
 
 [node name="Soup" type="StaticBody2D" unique_id=1186833826]
 script = ExtResource("1_fotto")
+item_textures = Dictionary[String, Texture2D]({
+"dried barley": ExtResource("4_ld3k3"),
+"mushroom": ExtResource("3_8c1p4"),
+"wild leeks": ExtResource("2_7r22i")
+})
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1605693287]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_htqbx")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.7204089
+frame_progress = 0.36107132
 
 [node name="PhysicsCollision" type="CollisionShape2D" parent="." unique_id=1774775594]
 shape = SubResource("CircleShape2D_y8oxa")
@@ -83,10 +95,15 @@ shape = SubResource("CircleShape2D_y8oxa")
 position = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_y8oxa")
 
-[node name="LifeTimer" type="Timer" parent="." unique_id=2051340365]
-unique_name_in_owner = true
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1514156742]
 replication_config = SubResource("SceneReplicationConfig_y8oxa")
 
-[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
+[node name="SpeechBubbleSpawn" type="Marker2D" parent="." unique_id=1766836876]
+position = Vector2(49, -78)
+
+[node name="SpeechBubble" type="Sprite2D" parent="SpeechBubbleSpawn" unique_id=1193881301]
+visible = false
+texture_filter = 1
+texture = ExtResource("6_8c1p4")
+
+[node name="BubbleItem" type="Sprite2D" parent="SpeechBubbleSpawn/SpeechBubble" unique_id=1553057109]
