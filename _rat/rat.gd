@@ -10,6 +10,7 @@ class_name RatController extends CharacterBody2D
 @export var sprite_frame_index: int = 0
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var item_tex: TextureRect = $CanvasLayer/MarginContainer/ItemSlot/ItemTex
+@onready var name_label: Label = %NameLabel
 
 const SPEED = 300.0
 
@@ -47,7 +48,8 @@ func _ready() -> void:
 		canvas_layer.hide()
 	else:
 		item_tex.texture = null
-	
+	name_label.text = NetworkManager.peers[player_id]
+
 	if sprite_frame:
 		animated_sprite_2d.sprite_frames = sprite_frame
 	if multiplayer.get_unique_id() == player_id:
