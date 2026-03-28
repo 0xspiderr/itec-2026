@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://7tacau4f3hs6"]
 
 [ext_resource type="Script" uid="uid://bcdqsxsl18nyn" path="res://_level/level_manager.gd" id="1_xtfeo"]
-[ext_resource type="Texture2D" uid="uid://d0lno0rt64d8s" path="res://Assets/Map/empty_map_base_.png" id="2_xmt5o"]
-[ext_resource type="Texture2D" uid="uid://cvrmu13u4n481" path="res://Assets/Map/tree_frame_map.png" id="3_brrif"]
+[ext_resource type="Texture2D" uid="uid://delcu2jenefoi" path="res://Assets/Map/map_2_bigger.png" id="2_xmt5o"]
+[ext_resource type="Texture2D" uid="uid://bvfotj7w8khai" path="res://Assets/Map/tree_layer_map_2_bigger.png" id="3_brrif"]
 [ext_resource type="PackedScene" uid="uid://ddfopkjypbgg1" path="res://_soup/soup.tscn" id="3_q4hp6"]
 [ext_resource type="PackedScene" uid="uid://g3sahwggyswl" path="res://_hud/soup_time_bar.tscn" id="4_7epgt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmt5o"]
+size = Vector2(215, 2534)
 
 [node name="Level1" type="Node2D" unique_id=1302037982]
 script = ExtResource("1_xtfeo")
@@ -82,11 +85,80 @@ offset_right = 1112.0
 offset_bottom = 1132.0
 
 [node name="Ground" type="Sprite2D" parent="Environment" unique_id=717154542]
+texture_filter = 1
 texture = ExtResource("2_xmt5o")
 
 [node name="MapFrame" type="Sprite2D" parent="Environment" unique_id=1654388055]
 texture_filter = 1
 texture = ExtResource("3_brrif")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment" unique_id=1965485074]
+position = Vector2(-1398, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D" unique_id=2085311281]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Environment" unique_id=1242272136]
+position = Vector2(63.000015, -942)
+rotation = 1.5707964
+scale = Vector2(1, 1.2800009)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D3" unique_id=1592168377]
+position = Vector2(69, 42.96873)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Environment" unique_id=762600743]
+position = Vector2(50.000004, 939.00006)
+rotation = 1.5620697
+scale = Vector2(1, 1.2800009)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D4" unique_id=1523995085]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Environment" unique_id=2064296217]
+position = Vector2(1211.9999, 772.00006)
+rotation = 0.7853982
+scale = Vector2(1, 0.48000056)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D5" unique_id=621742185]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Environment" unique_id=1939976688]
+position = Vector2(-1187, -680.0001)
+rotation = 0.7853982
+scale = Vector2(1, 0.48000056)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D6" unique_id=1308043359]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Environment" unique_id=1892521669]
+position = Vector2(-988.99994, 730)
+rotation = 2.268928
+scale = Vector2(1, 0.48000056)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D7" unique_id=1431881714]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Environment" unique_id=1609615446]
+position = Vector2(1253, -716.9999)
+rotation = 2.268928
+scale = Vector2(1, 0.48000056)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D8" unique_id=1940524590]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Environment" unique_id=836430823]
+position = Vector2(1471, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D2" unique_id=2125023564]
+position = Vector2(12.5, 43)
+shape = SubResource("RectangleShape2D_xmt5o")
 
 [node name="ItemSpawnTimer" type="Timer" parent="." unique_id=1399354534]
 wait_time = 2.0
