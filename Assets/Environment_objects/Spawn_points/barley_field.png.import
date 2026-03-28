@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b83hrke5uqce1"
-path="res://.godot/imported/pine_tree_tall.png-5c96e5582a962eeb605faed5abf43ac0.ctex"
+uid="uid://cq3j4i6lrgw8e"
+path="res://.godot/imported/barley_field.png-0b3f7e6c97e74eff10eb54f3ab901c47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment_objects/pine_tree_tall.png"
-dest_files=["res://.godot/imported/pine_tree_tall.png-5c96e5582a962eeb605faed5abf43ac0.ctex"]
+source_file="res://Assets/Environment_objects/Spawn_points/barley_field.png"
+dest_files=["res://.godot/imported/barley_field.png-0b3f7e6c97e74eff10eb54f3ab901c47.ctex"]
 
 [params]
 

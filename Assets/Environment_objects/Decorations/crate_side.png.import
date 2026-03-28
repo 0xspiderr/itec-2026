@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://87bjq8oqao2a"
-path="res://.godot/imported/pine_tree_small.png-55f50dbb8ec8ae0c136f71b03f55f8cc.ctex"
+uid="uid://c7lh8uew5qoq5"
+path="res://.godot/imported/crate_side.png-e3257a1e830f8a0271b656e1e4392447.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment_objects/pine_tree_small.png"
-dest_files=["res://.godot/imported/pine_tree_small.png-55f50dbb8ec8ae0c136f71b03f55f8cc.ctex"]
+source_file="res://Assets/Environment_objects/Decorations/crate_side.png"
+dest_files=["res://.godot/imported/crate_side.png-e3257a1e830f8a0271b656e1e4392447.ctex"]
 
 [params]
 
