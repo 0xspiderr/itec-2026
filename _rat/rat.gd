@@ -33,7 +33,7 @@ const ANIM_HOLD = {
 }
 
 var is_picking_up: bool = false
-var picked_items: Dictionary = {}
+@export var picked_items: Dictionary = {}
 
 func _ready() -> void:
 	var sprite_frame = player_sprite_frames.get(sprite_frame_index)
@@ -60,13 +60,31 @@ func _move_player() -> void:
 
 func _animate_player() -> void:
 	var dir = input_component.direction
-	if ANIM_MAP.has(dir) and picked_items.is_empty():
-		animated_sprite_2d.play(ANIM_MAP[dir])
-	elif ANIM_HOLD.has(dir):
-		animated_sprite_2d.play(ANIM_HOLD[dir])
 	
-	if dir.x != 0:
-		animated_sprite_2d.flip_h = (dir == Vector2.RIGHT)
+	if dir == Vector2.ZERO:
+		if picked_items.is_empty():
+			animated_sprite_2d.play(ANIM_MAP[Vector2.ZERO])
+		else:
+			animated_sprite_2d.play(ANIM_HOLD[Vector2.ZERO])
+		return
+
+	var anim_key = Vector2.ZERO
+	if abs(dir.x) > 0.01:
+		anim_key = Vector2.LEFT
+		animated_sprite_2d.flip_h = (dir.x > 0)
+	else:
+		animated_sprite_2d.flip_h = false
+		if dir.y < 0:
+			anim_key = Vector2.UP
+		elif dir.y > 0:
+			anim_key = Vector2.DOWN
+	
+	if picked_items.is_empty():
+		if ANIM_MAP.has(anim_key):
+			animated_sprite_2d.play(ANIM_MAP[anim_key])
+	else:
+		if ANIM_HOLD.has(anim_key):
+			animated_sprite_2d.play(ANIM_HOLD[anim_key])
 
 
 func _on_pickup_pressed() -> void:

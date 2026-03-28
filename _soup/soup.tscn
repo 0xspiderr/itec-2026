@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://db8r6417bksb8" path="res://Assets/Oala/cazan.png" id="2_y8oxa"]
 [ext_resource type="Texture2D" uid="uid://cu33ri3s65d38" path="res://Assets/Pickups/pickup_chanterelle.png" id="3_8c1p4"]
 [ext_resource type="Texture2D" uid="uid://dtvdbnrowsknh" path="res://Assets/Pickups/pickup_dried_barley.png" id="4_ld3k3"]
+[ext_resource type="Texture2D" uid="uid://cq830jscb2q3h" path="res://Assets/Pickups/pickup_winter_berries.png" id="5_ld3k3"]
 [ext_resource type="Texture2D" uid="uid://be2tp481vo457" path="res://Assets/UI/speech_bubble.png" id="6_8c1p4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0p4kj"]
@@ -76,7 +77,8 @@ script = ExtResource("1_fotto")
 item_textures = Dictionary[String, Texture2D]({
 "dried barley": ExtResource("4_ld3k3"),
 "mushroom": ExtResource("3_8c1p4"),
-"wild leeks": ExtResource("2_7r22i")
+"wild leeks": ExtResource("2_7r22i"),
+"winter berries": ExtResource("5_ld3k3")
 })
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1605693287]
