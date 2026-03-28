@@ -38,8 +38,8 @@ properties/6/spawn = false
 properties/6/replication_mode = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n77cq"]
-radius = 6.0
-height = 44.0
+radius = 12.0
+height = 48.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dwesx"]
 radius = 34.0147
@@ -49,7 +49,6 @@ atlas = ExtResource("7_ccay7")
 region = Rect2(64, 64, 32, 32)
 
 [node name="Rat" type="CharacterBody2D" unique_id=814430971]
-motion_mode = 1
 script = ExtResource("1_1meta")
 player_sprite_frames = Array[SpriteFrames]([ExtResource("2_5e2gr"), ExtResource("3_n77cq"), ExtResource("4_dwesx"), ExtResource("5_ccay7")])
 item_textures = Dictionary[String, Texture2D]({
@@ -68,7 +67,7 @@ replication_config = SubResource("SceneReplicationConfig_1meta")
 unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1256338610]
-unique_name_in_owner = true
+zoom = Vector2(1.5, 1.5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1893417312]
 texture_filter = 1
@@ -77,7 +76,8 @@ animation = &"idle_hold"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156681356]
-position = Vector2(3, 0)
+position = Vector2(0, 49)
+rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_n77cq")
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=2103028439]

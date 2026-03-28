@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://dogckl7huip08"]
 
-[ext_resource type="Script" uid="uid://dov8vw3gec7x1" path="res://_mainMenu/main_menu.gd" id="1_ooen3"]
+[ext_resource type="Script" uid="uid://dov8vw3gec7x1" path="res://_mainMenu/main_menu.gd" id="1_oupfn"]
+[ext_resource type="FontFile" uid="uid://daanan4q0ggpn" path="res://font/yoster.ttf" id="2_b531r"]
+[ext_resource type="Texture2D" uid="uid://dvijotoehyp5y" path="res://Assets/UI/UI.png" id="2_oupfn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oupfn"]
+texture = ExtResource("2_oupfn")
+texture_margin_left = 57.0
+texture_margin_top = 54.0
+texture_margin_right = 58.0
+texture_margin_bottom = 56.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 1, 64, 63)
 
 [node name="MarginContainer" type="MarginContainer" unique_id=582196056]
 anchors_preset = 15
@@ -8,51 +20,90 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ooen3")
+script = ExtResource("1_oupfn")
 
 [node name="menuContainer" type="VBoxContainer" parent="." unique_id=1454454465]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_constants/separation = 50
 
-[node name="IPAddres" type="LineEdit" parent="menuContainer" unique_id=711367561]
-custom_minimum_size = Vector2(220, 0)
+[node name="Panel" type="Panel" parent="menuContainer" unique_id=908319526]
+custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 26
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_oupfn")
+
+[node name="menuContainer" type="VBoxContainer" parent="menuContainer/Panel" unique_id=222914705]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -170.0
+offset_right = 110.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 50
+
+[node name="IPAddres" type="LineEdit" parent="menuContainer/Panel/menuContainer" unique_id=711367561]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_b531r")
+theme_override_font_sizes/font_size = 8
 text = "127.0.0.1"
 placeholder_text = "IP Addres"
 alignment = 1
 
-[node name="Name" type="LineEdit" parent="menuContainer" unique_id=535329179]
+[node name="Name" type="LineEdit" parent="menuContainer/Panel/menuContainer" unique_id=535329179]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(98, 16)
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_b531r")
+theme_override_font_sizes/font_size = 8
+text = "a"
 placeholder_text = "Name"
 alignment = 1
 
-[node name="Connect" type="Button" parent="menuContainer" unique_id=687210997]
-custom_minimum_size = Vector2(160, 60)
+[node name="Connect" type="Button" parent="menuContainer/Panel/menuContainer" unique_id=687210997]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("2_b531r")
+theme_override_font_sizes/font_size = 8
 text = "Connect"
 
-[node name="HostBtn" type="Button" parent="menuContainer" unique_id=907993549]
-custom_minimum_size = Vector2(160, 60)
+[node name="HostBtn" type="Button" parent="menuContainer/Panel/menuContainer" unique_id=907993549]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("2_b531r")
+theme_override_font_sizes/font_size = 8
 text = "Host"
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=629995657]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=687920912]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/TextureRect" unique_id=73861059]
+[node name="ErrorRichTextLabel" type="RichTextLabel" parent="CenterContainer/TextureRect" unique_id=73861059]
 custom_minimum_size = Vector2(320, 120)
 layout_mode = 1
 anchors_preset = 8
@@ -76,4 +127,4 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="menuContainer/HostBtn" to="." method="_on_host_btn_pressed"]
+[connection signal="pressed" from="menuContainer/Panel/menuContainer/HostBtn" to="." method="_on_host_btn_pressed"]

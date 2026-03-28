@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 NetworkManager="*uid://bltqgawe886nq"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [file_customization]
 
 folder_colors={
@@ -29,6 +33,10 @@ folder_colors={
 "res://_rat/": "red",
 "res://pickable_item/": "orange"
 }
+
+[gui]
+
+theme/custom_font="uid://daanan4q0ggpn"
 
 [input]
 

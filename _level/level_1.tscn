@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bydh5cqb6r4py" path="res://icon.svg" id="1_42i0l"]
 [ext_resource type="Script" uid="uid://bcdqsxsl18nyn" path="res://_level/level_manager.gd" id="1_xtfeo"]
 [ext_resource type="PackedScene" uid="uid://ddfopkjypbgg1" path="res://_soup/soup.tscn" id="3_q4hp6"]
+[ext_resource type="PackedScene" uid="uid://g3sahwggyswl" path="res://_hud/soup_time_bar.tscn" id="4_7epgt"]
 
 [node name="Level1" type="Node2D" unique_id=1302037982]
 script = ExtResource("1_xtfeo")
@@ -67,3 +68,26 @@ texture = ExtResource("1_42i0l")
 wait_time = 2.0
 
 [node name="Soup" parent="." unique_id=1386634272 instance=ExtResource("3_q4hp6")]
+z_index = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1183914235]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=536882747]
+texture_filter = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -83.0
+offset_right = 785.0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ProgressBar" parent="CanvasLayer/MarginContainer" unique_id=640946887 instance=ExtResource("4_7epgt")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
