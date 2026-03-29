@@ -25,6 +25,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmt5o"]
 size = Vector2(215, 2534)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cedvk"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(800, 1, 1)
+initial_velocity_max = 1.0
+gravity = Vector3(-300, 400, 0)
+scale_min = 2.0
+scale_max = 5.0
+color = Color(0.82606, 0.82606006, 0.82606, 1)
+turbulence_enabled = true
+
 [node name="Level1" type="Node2D" unique_id=1302037982]
 y_sort_enabled = true
 script = ExtResource("1_xtfeo")
@@ -742,6 +753,12 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Time survived: "
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer" unique_id=735268748]
+amount = 500
+lifetime = 4.0
+preprocess = 5.0
+process_material = SubResource("ParticleProcessMaterial_cedvk")
 
 [node name="ButurugaSpawnTimer" type="Timer" parent="." unique_id=1908935787]
 wait_time = 5.0
