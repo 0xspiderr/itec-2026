@@ -20,12 +20,12 @@ signal soup_ruined() # game over
 
 
 const ITEM_TIME_VALUES: Dictionary = {
-	"winter berries": 2.0,
-	"dried barley": 6.0,
-	"mushroom": 8.0,
-	"wild leeks": 6.5,
-	"turnip": 5.0,
-	"meat": 10.0
+	"winter berries": 5.0,
+	"dried barley": 10.0,
+	"mushroom": 12.0,
+	"wild leeks": 9.0,
+	"turnip": 8.0,
+	"meat": 15.0
 }
 
 var base_bubble_y: float = 0.0
@@ -126,7 +126,7 @@ func server_receive_log() -> void:
 	if not multiplayer.is_server() or is_game_over: 
 		return
 	
-	var massive_time_boost = 20.0
+	var massive_time_boost = 30.0
 	soup_time += massive_time_boost
 	
 	print("buturuga pe foc ", massive_time_boost, "s total: ", soup_time, "s")
