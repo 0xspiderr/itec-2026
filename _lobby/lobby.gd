@@ -40,10 +40,7 @@ func _on_start_btn_pressed() -> void:
 
 
 func _on_back_btn_pressed() -> void:
-	if multiplayer.is_server():
-		# This triggers server_disconnected on all clients automatically
-		NetworkManager.remove_multiplayer_peer()
-		NetworkManager.peers.clear()
+	NetworkManager.remove_multiplayer_peer()
 	get_tree().call_deferred("change_scene_to_file", "res://_mainMenu/mainMenu.tscn")
 
 func _on_server_left() -> void:

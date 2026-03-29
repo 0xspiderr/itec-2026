@@ -68,7 +68,8 @@ func _register_peer(new_peer_name: String) -> void:
 
 
 func _on_player_disconnected(id: int) -> void:
-	peers.erase(id)
+	if peers.has(id):
+		peers.erase(id)
 	#print(peers)
 	update_lobby_ui.emit() # sendto lobby
 
