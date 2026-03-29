@@ -84,6 +84,7 @@ theme_override_fonts/font = ExtResource("2_b531r")
 theme_override_font_sizes/font_size = 8
 placeholder_text = "Your name"
 alignment = 1
+max_length = 10
 
 [node name="Connect" type="Button" parent="menuContainer/Panel/menuContainer" unique_id=687210997]
 unique_name_in_owner = true

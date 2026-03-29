@@ -3,6 +3,7 @@ extends MarginContainer
 @onready var ip_addres: LineEdit = %IPAddres
 @onready var name_player: LineEdit = %Name
 @onready var connect_button: Button = %Connect
+@onready var host_button: Button = %HostBtn
 @onready var menu: VBoxContainer = %menuContainer
 @onready var error: CenterContainer = %CenterContainer
 
@@ -12,6 +13,7 @@ func _ready() -> void:
 	ip_addres.text_changed.connect(_check_fields)
 	name_player.text_changed.connect(_check_fields)
 	connect_button.disabled = true
+	host_button.disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _check_fields(_new_text: String = "") -> void:
@@ -19,6 +21,12 @@ func _check_fields(_new_text: String = "") -> void:
 		connect_button.disabled = true
 	else:
 		connect_button.disabled = false
+	
+	if ip_addres.text.is_empty() and not name_player.text.is_empty():
+		host_button.disabled = false
+	else:
+		host_button.disabled = true
+		
 
 func _input(event: InputEvent) -> void:
 	if event.is_pressed() and error.visible:
