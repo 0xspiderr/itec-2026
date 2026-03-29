@@ -6,6 +6,7 @@ extends MarginContainer
 @onready var host_button: Button = %HostBtn
 @onready var menu: VBoxContainer = %menuContainer
 @onready var error: CenterContainer = %CenterContainer
+@onready var help_menu: VBoxContainer = %HelpMenu
 
 
 # Called when the node enters the scene tree for the first time.
@@ -48,3 +49,13 @@ func _on_connect_btn_pressed() -> void:
 
 func _on_back_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://_start_menu/startScene.tscn")
+
+
+func _on_help_button_pressed() -> void:
+	menu.hide()
+	help_menu.show()
+	
+
+func _on_back_help_button_pressed() -> void:
+	menu.show()
+	help_menu.hide()
