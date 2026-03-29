@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="itec_2026"
-run/main_scene="uid://dogckl7huip08"
+run/main_scene="uid://oq36u0300glc"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
