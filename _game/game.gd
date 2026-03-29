@@ -20,8 +20,10 @@ func _on_start_level() -> void:
 		return
 	
 	_remove_old_level()
+	await get_tree().process_frame
 	
 	var new_level = LEVEL_1.instantiate()
+	new_level.restart_requested.connect(_on_start_level)
 	level_holder.add_child(new_level, true)
 	_hide_ui.rpc()
 

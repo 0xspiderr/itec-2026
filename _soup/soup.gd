@@ -1,6 +1,6 @@
 class_name Soup extends Node2D
 
-@export var starting_time: float = 5.0
+@export var starting_time: float = 60.0
 @export var soup_time: float
 var is_game_over: bool = false
 var ingredients: Array[String] = []
