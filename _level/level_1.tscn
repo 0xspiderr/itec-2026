@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://32y77v0gdfej" path="res://Environment_scenes/tree_small.tscn" id="17_jopcs"]
 [ext_resource type="Texture2D" uid="uid://4h6e34mg4lb4" path="res://Assets/BG/start_bg.png" id="21_cedvk"]
 [ext_resource type="AudioStream" uid="uid://bonq4porf8ldl" path="res://_sounds/wind.wav" id="22_77kq1"]
+[ext_resource type="Theme" uid="uid://dvnm8f75jaivf" path="res://theme/menu_ui.tres" id="22_bf7kp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmt5o"]
 size = Vector2(215, 2534)
@@ -694,7 +695,7 @@ y_sort_enabled = true
 position = Vector2(-41, -19)
 
 [node name="ItemSpawnTimer" type="Timer" parent="." unique_id=1399354534]
-wait_time = 2.0
+wait_time = 6.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1183914235]
 
@@ -746,13 +747,16 @@ grow_vertical = 2
 [node name="RestartGameBtn" type="Button" parent="CanvasLayer/GameOverScreen/VBoxContainer" unique_id=1603458873]
 unique_name_in_owner = true
 visible = false
+texture_filter = 1
 layout_mode = 2
+theme = ExtResource("22_bf7kp")
 text = "Restart"
 
 [node name="SurvivedLabel" type="Label" parent="CanvasLayer/GameOverScreen/VBoxContainer" unique_id=1782172976]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme = ExtResource("22_bf7kp")
+theme_override_font_sizes/font_size = 12
 text = "Time survived: "
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer" unique_id=735268748]
