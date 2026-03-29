@@ -9,6 +9,7 @@ var holder_2: RatController = null
 @onready var left_grab: Marker2D = $LeftGrab
 @onready var right_grab: Marker2D = $RightGrab
 @onready var area_2d: Area2D = $Area2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _physics_process(_delta: float) -> void:
@@ -62,6 +63,7 @@ func server_try_interact(player: RatController) -> void:
 			_set_rat_carry_state(holder_2, true)
 
 func _server_drop_all() -> void:
+	audio_stream_player_2d.play()
 	if holder_1 != null:
 		_set_rat_carry_state(holder_1, false)
 		holder_1 = null

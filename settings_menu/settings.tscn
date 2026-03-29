@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://e6rgcgkgxekp"]
+
+[ext_resource type="Texture2D" uid="uid://4h6e34mg4lb4" path="res://Assets/BG/start_bg.png" id="1_5xq2h"]
+[ext_resource type="Script" uid="uid://t0wgn5pt7ygh" path="res://settings_menu/settings.gd" id="1_ncwcg"]
+[ext_resource type="Theme" uid="uid://dvnm8f75jaivf" path="res://theme/menu_ui.tres" id="2_gb0mi"]
+[ext_resource type="Theme" uid="uid://bhbv6t23ec0ip" path="res://theme/ui_buttons.tres" id="3_7c4j3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7c4j3"]
+bg_color = Color(0.15487596, 0.154876, 0.15487587, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gb0mi"]
+bg_color = Color(0.16206557, 0.1620656, 0.16206548, 1)
+
+[node name="Settings" type="Control" unique_id=1180804152]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ncwcg")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1856824080]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5xq2h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1257988215]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -20.0
+offset_right = 84.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=412907598]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1920105886]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("2_gb0mi")
+text = "Volume:"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HBoxContainer" unique_id=1369162789]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_7c4j3")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_gb0mi")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=231740527]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("3_7c4j3")
+
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

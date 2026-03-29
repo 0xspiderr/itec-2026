@@ -85,8 +85,12 @@ func _on_connected_fail() -> void:
 func _on_server_disconnected() -> void:
 	remove_multiplayer_peer()
 	peers.clear()
+	get_tree().change_scene_to_file("res://_mainMenu/mainMenu.tscn")
 
 
 func remove_multiplayer_peer() -> void:
 	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	peers.clear()
+
+func return_to_menu() -> void:
+	get_tree().call_deferred("change_scene_to_file", "res://_mainMenu/mainMenu.tscn")
