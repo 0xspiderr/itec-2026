@@ -15,10 +15,12 @@ func _ready() -> void:
 		start_btn.visible = true
 	NetworkManager.update_lobby_ui.connect(_on_lobby_ui_update)
 	_on_lobby_ui_update()
+	multiplayer.server_disconnected.connect(_on_server_left)
 
 
 func _on_lobby_ui_update() -> void:
 	_remove_lobby_items()
+	await get_tree().process_frame
 	for id in NetworkManager.peers:
 		var peer_name = NetworkManager.peers.get(id, 1)
 		var new_item = LOBBY_ITEM.instantiate() as LobbyItem
@@ -35,3 +37,16 @@ func _on_start_btn_pressed() -> void:
 	if not multiplayer.is_server():
 		return
 	start_level.emit() # called in the game parent scene
+
+
+func _on_back_btn_pressed() -> void:
+	if multiplayer.is_server():
+		# This triggers server_disconnected on all clients automatically
+		NetworkManager.remove_multiplayer_peer()
+		NetworkManager.peers.clear()
+	get_tree().call_deferred("change_scene_to_file", "res://_mainMenu/mainMenu.tscn")
+
+func _on_server_left() -> void:
+	NetworkManager.remove_multiplayer_peer()
+	NetworkManager.peers.clear()
+	NetworkManager.return_to_menu()
