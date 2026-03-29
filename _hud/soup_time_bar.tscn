@@ -12,9 +12,9 @@ region_rect = Rect2(0, 64, 64, 32)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3x7sg"]
 texture = ExtResource("1_3x7sg")
-texture_margin_left = 23.0
+texture_margin_left = 7.0
 texture_margin_top = 10.0
-texture_margin_right = 24.0
+texture_margin_right = 8.0
 texture_margin_bottom = 10.0
 region_rect = Rect2(0, 96, 64, 32)
 

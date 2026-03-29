@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 	
 	soup_time -= delta
 	
-	if soup_time <= 0.0:
+	if soup_time <= -0.2:
 		soup_time = 0.0
 		is_game_over = true
 		soup_ruined.emit()
