@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 
 @onready var ip_addres: LineEdit = %IPAddres
 @onready var name_player: LineEdit = %Name
