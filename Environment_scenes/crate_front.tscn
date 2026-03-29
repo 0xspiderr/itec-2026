@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bjaadaekylgdc"]
+
+[ext_resource type="Texture2D" uid="uid://j6b3ot46owro" path="res://Assets/Environment_objects/Trees/crate_front.png" id="1_6ll5n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dobl0"]
+size = Vector2(28, 26)
+
+[node name="crate_front" type="StaticBody2D" unique_id=1080726107]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=704345706]
+position = Vector2(8, -13)
+texture = ExtResource("1_6ll5n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=164167245]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_dobl0")

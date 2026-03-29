@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dby3k1pdur5p2"]
+
+[ext_resource type="Texture2D" uid="uid://c7lh8uew5qoq5" path="res://Assets/Environment_objects/Decorations/crate_side.png" id="1_a1jxe"]
+
+[node name="crate_side" type="StaticBody2D" unique_id=407883292]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1402327537]
+position = Vector2(6, -8)
+texture = ExtResource("1_a1jxe")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=266036217]
+polygon = PackedVector2Array(20, 4, -1, 15, -20, 2, -1, -8)
