@@ -45,6 +45,8 @@ var is_picking_up: bool = false
 
 
 func _ready() -> void:
+	if multiplayer.is_server():
+		multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	var sprite_frame = player_sprite_frames.get(sprite_frame_index)
 	if multiplayer.get_unique_id() != player_id:
 		canvas_layer.hide()
@@ -58,6 +60,12 @@ func _ready() -> void:
 		camera_2d.make_current()
 	input_component.pickup_pressed.connect(_on_pickup_pressed)
 
+
+func _on_peer_disconnected(id: int) -> void:
+	if id == player_id:
+		if current_buturuga != null:
+			current_buturuga.server_try_interact(self)
+		queue_free()
 
 func _physics_process(_delta: float) -> void:
 	#if not multiplayer.is_server():
