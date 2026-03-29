@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="itec_2026"
+config/name="TheEternalSoup"
 run/main_scene="uid://oq36u0300glc"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://dalpq5uxbmmdg"
 
 [autoload]
 
