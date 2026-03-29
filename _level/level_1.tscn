@@ -383,7 +383,7 @@ position = Vector2(236, 230)
 position = Vector2(-108, -171)
 
 [node name="crate_side5" parent="Decorations" unique_id=1468615163 instance=ExtResource("10_aii24")]
-position = Vector2(13, 71)
+position = Vector2(-5, 87)
 
 [node name="crate_side6" parent="Decorations" unique_id=280667157 instance=ExtResource("10_aii24")]
 position = Vector2(-241, 59)
@@ -414,7 +414,7 @@ position = Vector2(193, -93)
 position = Vector2(-270, 308)
 
 [node name="plant3" parent="Decorations" unique_id=1243425105 instance=ExtResource("12_mj5xj")]
-position = Vector2(34, 53)
+position = Vector2(30, 63)
 
 [node name="plant4" parent="Decorations" unique_id=2130467771 instance=ExtResource("12_mj5xj")]
 position = Vector2(66, 473)

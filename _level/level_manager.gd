@@ -69,7 +69,7 @@ func _on_restart_game_btn_pressed() -> void:
 		restart_requested.emit()
 
 func _start_random_cat_timer() -> void:
-	cat_spawn_timer.wait_time = randf_range(5.0, 5.0)
+	cat_spawn_timer.wait_time = randf_range(30.0, 45.0)
 	cat_spawn_timer.start()
 
 func _on_cat_spawn_timer() -> void:

@@ -20,6 +20,7 @@ const ITEM_TEXTURE_NAMES = [
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 const TWEEN_TIME_SPAWN: float = 1.0
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _ready() -> void:
@@ -39,6 +40,7 @@ func server_confirm_pickup(picker: RatController) -> void:
 	if picker.has_method("item_pickup"):
 		picker.item_pickup()
 	
+	audio_stream_player_2d.play()
 	_squish_and_die.rpc()
 
 

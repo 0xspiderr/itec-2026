@@ -7,6 +7,7 @@ var is_exploding: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Hitbox
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var sync_anim: String = "run":
 	set(value):
@@ -45,9 +46,11 @@ func _check_collisions() -> void:
 		
 		if target is Soup and not is_retreating:
 			_explode(target)
+			audio_stream_player_2d.play(0.8)
 			return
 		elif target is RatController and not is_retreating:
 			_retreat()
+			audio_stream_player_2d.play(0.8)
 			return
 
 func _explode(pot: Soup) -> void:
@@ -65,6 +68,6 @@ func _retreat() -> void:
 	direction = -direction 
 	sync_flip = (direction.x < 0) # Automatically flips the sprite for everyone
 	
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(2.5).timeout
 	if is_inside_tree():
 		queue_free()
