@@ -26,7 +26,6 @@ func _on_lobby_ui_update() -> void:
 		print(id)
 		lobby_container.add_child(new_item, true)
 
-
 func _remove_lobby_items() -> void:
 	for item in lobby_container.get_children():
 		item.queue_free()

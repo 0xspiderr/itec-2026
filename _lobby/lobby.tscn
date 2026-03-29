@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://yitpqaigpqvx" path="res://_lobby/lobby.gd" id="1_fuoyk"]
 [ext_resource type="Theme" uid="uid://dvnm8f75jaivf" path="res://theme/menu_ui.tres" id="1_w4r5k"]
 [ext_resource type="FontFile" uid="uid://daanan4q0ggpn" path="res://font/yoster.ttf" id="2_kxvj5"]
+[ext_resource type="Theme" path="res://theme/ui_buttons.tres" id="4_ex7t2"]
+[ext_resource type="Theme" uid="uid://5g0flvr566fg" path="res://theme/button.tres" id="5_dskl3"]
 
 [node name="Lobby" type="Control" unique_id=1552650006]
 layout_mode = 3
@@ -74,5 +76,28 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_kxvj5")
 theme_override_font_sizes/font_size = 8
 text = "Start game"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=791837066]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -58.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("4_ex7t2")
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="MarginContainer" unique_id=1559710024]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme = ExtResource("5_dskl3")
 
 [connection signal="pressed" from="VBoxContainer2/Panel/VBoxContainer2/StartBtn" to="." method="_on_start_btn_pressed"]
