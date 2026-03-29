@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djngvgoichge4" path="res://_game/game.gd" id="1_k1epg"]
 [ext_resource type="PackedScene" uid="uid://dlto07yleoj1b" path="res://_lobby/lobby.tscn" id="1_wt8tb"]
+[ext_resource type="PackedScene" uid="uid://e6rgcgkgxekp" path="res://settings_menu/settings.tscn" id="3_t5wuy"]
 
 [node name="Game" type="Node2D" unique_id=1684282353]
 script = ExtResource("1_k1epg")
@@ -18,3 +19,6 @@ spawn_path = NodePath("../LevelHolder")
 unique_name_in_owner = true
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Settings" parent="CanvasLayer" unique_id=1180804152 instance=ExtResource("3_t5wuy")]
+visible = false

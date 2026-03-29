@@ -723,6 +723,7 @@ size_flags_vertical = 1
 [node name="GameOverScreen" type="TextureRect" parent="CanvasLayer" unique_id=1944289938]
 unique_name_in_owner = true
 visible = false
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

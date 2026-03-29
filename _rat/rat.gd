@@ -52,7 +52,8 @@ func _ready() -> void:
 		canvas_layer.hide()
 	else:
 		item_tex.texture = null
-	name_label.text = NetworkManager.peers.get(player_id, 1)
+	if name_label:
+		name_label.text = NetworkManager.peers.get(player_id, "default")
 
 	if sprite_frame:
 		animated_sprite_2d.sprite_frames = sprite_frame
