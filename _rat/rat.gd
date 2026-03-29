@@ -146,6 +146,7 @@ func request_pickup():
 			print("interacted")
 			return
 
+
 func item_pickup():
 	_play_pickup_effects.rpc()
 

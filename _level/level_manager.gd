@@ -28,6 +28,7 @@ var is_game_active: bool = true
 
 const CAT = preload("uid://bt8rvbp8bgh8w")
 
+signal restart_requested()
 
 func _ready() -> void:
 	_spawn_rats()
@@ -48,7 +49,6 @@ func _process(delta: float) -> void:
 	if multiplayer.is_server() and is_game_active:
 		survival_time += delta
 
-
 func _on_soup_ruined() -> void:
 	if multiplayer.is_server():
 		is_game_active = false
@@ -60,14 +60,13 @@ func _show_game_over(time: int) -> void:
 	item_spawn_timer.stop()
 	buturuga_spawn_timer.stop()
 	game_over_screen.show()
-	survived_label.text = "You survived for %s seconds" % int(time)
+	survived_label.text = "you survived for %s seconds" % int(time)
 	if multiplayer.is_server():
 		restart_game_btn.show()
 
-@rpc("authority", "call_local", "reliable")
 func _on_restart_game_btn_pressed() -> void:
-	get_tree().reload_current_scene()
-
+	if multiplayer.is_server():
+		restart_requested.emit()
 
 func _start_random_cat_timer() -> void:
 	cat_spawn_timer.wait_time = randf_range(5.0, 5.0)

@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cq3j4i6lrgw8e" path="res://Assets/Environment_objects/Spawn_points/barley_field.png" id="15_77qe0"]
 [ext_resource type="PackedScene" uid="uid://htan51e6eu4a" path="res://Environment_scenes/tree_large.tscn" id="16_o0p14"]
 [ext_resource type="PackedScene" uid="uid://32y77v0gdfej" path="res://Environment_scenes/tree_small.tscn" id="17_jopcs"]
+[ext_resource type="Texture2D" uid="uid://4h6e34mg4lb4" path="res://Assets/BG/start_bg.png" id="21_cedvk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmt5o"]
 size = Vector2(215, 2534)
@@ -714,6 +715,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("21_cedvk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOverScreen" unique_id=928292732]
 layout_mode = 1
