@@ -61,6 +61,7 @@ func _show_game_over(time: int) -> void:
 	buturuga_spawn_timer.stop()
 	game_over_screen.show()
 	survived_label.text = "you survived for %s seconds" % int(time)
+	AudioServer.set_bus_mute(0, true)
 	if multiplayer.is_server():
 		restart_game_btn.show()
 

@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://htan51e6eu4a" path="res://Environment_scenes/tree_large.tscn" id="16_o0p14"]
 [ext_resource type="PackedScene" uid="uid://32y77v0gdfej" path="res://Environment_scenes/tree_small.tscn" id="17_jopcs"]
 [ext_resource type="Texture2D" uid="uid://4h6e34mg4lb4" path="res://Assets/BG/start_bg.png" id="21_cedvk"]
+[ext_resource type="AudioStream" uid="uid://bonq4porf8ldl" path="res://_sounds/wind.wav" id="22_77kq1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmt5o"]
 size = Vector2(215, 2534)
@@ -761,7 +762,7 @@ preprocess = 5.0
 process_material = SubResource("ParticleProcessMaterial_cedvk")
 
 [node name="ButurugaSpawnTimer" type="Timer" parent="." unique_id=1908935787]
-wait_time = 5.0
+wait_time = 15.0
 
 [node name="Buturugi" type="Node2D" parent="." unique_id=1202846112]
 z_index = -1
@@ -771,5 +772,10 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="CatSpawnTimer" type="Timer" parent="." unique_id=987132060]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=130830803]
+stream = ExtResource("22_77kq1")
+autoplay = true
+max_distance = 4096.0
 
 [connection signal="pressed" from="CanvasLayer/GameOverScreen/VBoxContainer/RestartGameBtn" to="." method="_on_restart_game_btn_pressed"]

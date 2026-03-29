@@ -24,6 +24,7 @@ func _on_start_level() -> void:
 	
 	var new_level = LEVEL_1.instantiate()
 	new_level.restart_requested.connect(_on_start_level)
+	AudioServer.set_bus_mute(0, false)
 	level_holder.add_child(new_level, true)
 	_hide_ui.rpc()
 
