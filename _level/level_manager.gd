@@ -19,6 +19,13 @@ const PICKABLE_ITEM = preload("uid://ckl8vqyes3cml")
 @onready var cats: Node = $Cats
 
 @onready var soup: Soup = $Soup
+@onready var game_over_screen: TextureRect = %GameOverScreen
+@onready var restart_game_btn: Button = %RestartGameBtn
+
+var survival_time: float = 0.0
+var is_game_active: bool = true
+@onready var survived_label: Label = %SurvivedLabel
+
 const CAT = preload("uid://bt8rvbp8bgh8w")
 
 
@@ -32,6 +39,35 @@ func _ready() -> void:
 		buturuga_spawn_timer.start()
 		cat_spawn_timer.timeout.connect(_on_cat_spawn_timer)
 		_start_random_cat_timer()
+		
+		if soup:
+			soup.soup_ruined.connect(_on_soup_ruined)
+
+
+func _process(delta: float) -> void:
+	if multiplayer.is_server() and is_game_active:
+		survival_time += delta
+
+
+func _on_soup_ruined() -> void:
+	if multiplayer.is_server():
+		is_game_active = false
+		_show_game_over.rpc(int(survival_time))
+
+
+@rpc("authority", "call_local", "reliable")
+func _show_game_over(time: int) -> void:
+	item_spawn_timer.stop()
+	buturuga_spawn_timer.stop()
+	game_over_screen.show()
+	survived_label.text = "You survived for %s seconds" % int(time)
+	if multiplayer.is_server():
+		restart_game_btn.show()
+
+@rpc("authority", "call_local", "reliable")
+func _on_restart_game_btn_pressed() -> void:
+	get_tree().reload_current_scene()
+
 
 func _start_random_cat_timer() -> void:
 	cat_spawn_timer.wait_time = randf_range(5.0, 5.0)

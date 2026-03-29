@@ -44,6 +44,7 @@ animations = [{
 texture_filter = 1
 position = Vector2(-6, -21.5)
 sprite_frames = SubResource("SpriteFrames_gjjue")
+autoplay = "default"
 frame_progress = 0.73759216
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=166385557]

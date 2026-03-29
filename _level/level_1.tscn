@@ -706,6 +706,41 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 
+[node name="GameOverScreen" type="TextureRect" parent="CanvasLayer" unique_id=1944289938]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOverScreen" unique_id=928292732]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = -20.0
+offset_right = 64.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RestartGameBtn" type="Button" parent="CanvasLayer/GameOverScreen/VBoxContainer" unique_id=1603458873]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Restart"
+
+[node name="SurvivedLabel" type="Label" parent="CanvasLayer/GameOverScreen/VBoxContainer" unique_id=1782172976]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Time survived: "
+
 [node name="ButurugaSpawnTimer" type="Timer" parent="." unique_id=1908935787]
 wait_time = 5.0
 
@@ -717,3 +752,5 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="CatSpawnTimer" type="Timer" parent="." unique_id=987132060]
+
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/VBoxContainer/RestartGameBtn" to="." method="_on_restart_game_btn_pressed"]
