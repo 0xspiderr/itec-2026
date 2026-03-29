@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://oq36u0300glc"]
 
+[ext_resource type="Theme" uid="uid://dvnm8f75jaivf" path="res://theme/menu_ui.tres" id="1_77lh3"]
+[ext_resource type="Script" uid="uid://t1nd2rilvt23" path="res://_start_menu/start_scene.gd" id="1_uxywv"]
+
 [node name="StartScene" type="Control" unique_id=843580222]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +10,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uxywv")
+
+[node name="Start_btn" type="Button" parent="." unique_id=746328452]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -135.0
+offset_right = 35.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_77lh3")
+text = "Start"
+
+[connection signal="pressed" from="Start_btn" to="." method="_on_start_btn_pressed"]

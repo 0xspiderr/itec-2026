@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bmissj4motivb" path="res://Assets/Pickups/pickup_turnip.png" id="8_dfxnk"]
 [ext_resource type="Texture2D" uid="uid://cq830jscb2q3h" path="res://Assets/Pickups/pickup_winter_berries.png" id="10_7fbow"]
 [ext_resource type="Texture2D" uid="uid://dtvdbnrowsknh" path="res://Assets/Pickups/pickup_dried_barley.png" id="11_pg4ac"]
+[ext_resource type="Theme" uid="uid://dvnm8f75jaivf" path="res://theme/menu_ui.tres" id="13_3vrsw"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1meta"]
 properties/0/path = NodePath(".:position")
@@ -91,7 +92,7 @@ offset_left = -57.0
 offset_top = -58.0
 offset_right = 53.0
 offset_bottom = -32.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme = ExtResource("13_3vrsw")
 theme_override_font_sizes/font_size = 12
 text = "default"
 horizontal_alignment = 1
