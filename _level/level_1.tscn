@@ -184,7 +184,7 @@ position = Vector2(449, -213)
 position = Vector2(-462, -290)
 
 [node name="Marker2D3" type="Marker2D" parent="ButurugaSpawnPoints" unique_id=463184829]
-position = Vector2(343, 303)
+position = Vector2(652, 441)
 
 [node name="Environment" type="Node2D" parent="." unique_id=1130732815]
 z_index = -2
