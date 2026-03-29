@@ -22,7 +22,7 @@ func _check_fields(_new_text: String = "") -> void:
 	else:
 		connect_button.disabled = false
 	
-	if ip_addres.text.is_empty() and not name_player.text.is_empty():
+	if not name_player.text.is_empty():
 		host_button.disabled = false
 	else:
 		host_button.disabled = true
