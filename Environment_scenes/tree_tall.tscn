@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c00h3fgloador"]
+
+[ext_resource type="Texture2D" uid="uid://b83hrke5uqce1" path="res://Assets/Environment_objects/Trees/pine_tree_tall.png" id="1_40t0v"]
+
+[node name="Tree_tall" type="StaticBody2D" unique_id=1308694422]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1114590876]
+texture_filter = 1
+position = Vector2(3, -95)
+texture = ExtResource("1_40t0v")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2033388321]
+position = Vector2(3, 14)
+polygon = PackedVector2Array(0, -36, 84, -17, 23, 31, -27, 31, -84, -16)

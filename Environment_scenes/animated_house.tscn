@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://r7rabyl57ce6"]
+
+[ext_resource type="Texture2D" uid="uid://d1qwrtklf4pp8" path="res://Assets/Environment_objects/Houses/house_with_baby_rats.png" id="1_q2hyx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfwy4"]
+atlas = ExtResource("1_q2hyx")
+region = Rect2(0, 0, 142, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3gdh"]
+atlas = ExtResource("1_q2hyx")
+region = Rect2(142, 0, 142, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kcuj"]
+atlas = ExtResource("1_q2hyx")
+region = Rect2(284, 0, 142, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi0pg"]
+atlas = ExtResource("1_q2hyx")
+region = Rect2(426, 0, 142, 123)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gjjue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfwy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3gdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kcuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi0pg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="animated_house" type="StaticBody2D" unique_id=1388473632]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=377984529]
+texture_filter = 1
+position = Vector2(-6, -21.5)
+sprite_frames = SubResource("SpriteFrames_gjjue")
+frame_progress = 0.73759216
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=166385557]
+position = Vector2(-6, -21.5)
+polygon = PackedVector2Array(59, 21, 14, 53, -51, 29, -3, 3)

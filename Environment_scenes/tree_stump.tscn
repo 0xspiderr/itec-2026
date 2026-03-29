@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dkeqlj8fgoh1g"]
+
+[ext_resource type="Texture2D" uid="uid://dl12hrpkcojow" path="res://Assets/Environment_objects/Spawn_points/tree_stump.png" id="1_c56yl"]
+
+[node name="tree_stump" type="StaticBody2D" unique_id=2026391185]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1047603766]
+texture_filter = 1
+position = Vector2(0, -3)
+texture = ExtResource("1_c56yl")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=9708276]
+polygon = PackedVector2Array(0, -7, 18, -2, 25, 9, -1, 15, -27, 8, -16, -6)

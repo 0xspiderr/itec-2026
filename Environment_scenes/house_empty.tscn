@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cv1of5ca3thbm"]
+
+[ext_resource type="Texture2D" uid="uid://eubsoki7vsy5" path="res://Assets/Environment_objects/Houses/empty_house.png" id="1_cpd5y"]
+
+[node name="house_empty" type="StaticBody2D" unique_id=1358185147]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2037471655]
+position = Vector2(-5.5999985, -26.5)
+texture = ExtResource("1_cpd5y")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1813346979]
+position = Vector2(-3.5999985, -4.5)
+polygon = PackedVector2Array(56, 2, 12, 31, -52, 8, -5, -19)
