@@ -14,7 +14,9 @@ var ingredients: Array[String] = []
 @onready var speech_bubble: Sprite2D = $SpeechBubbleSpawn/SpeechBubble
 @onready var bubble_item: Sprite2D = $SpeechBubbleSpawn/SpeechBubble/BubbleItem
 @onready var progress_bar: ProgressBar = %ProgressBar
+@onready var splash_audio: AudioStreamPlayer2D = $SplashAudio
 
+signal soup_ruined() # game over
 
 
 const ITEM_TIME_VALUES: Dictionary = {
@@ -52,8 +54,7 @@ func _process(delta: float) -> void:
 	if soup_time <= 0.0:
 		soup_time = 0.0
 		is_game_over = true
-		_trigger_game_over.rpc()
-
+		soup_ruined.emit()
 
 func server_receive_ingredient(_player: RatController, item_name: String) -> void:
 	if not multiplayer.is_server() or is_game_over: 
@@ -84,12 +85,7 @@ func server_receive_ingredient(_player: RatController, item_name: String) -> voi
 @rpc("authority", "call_local", "reliable")
 func _sync_soup_data(synced_ingredients: Array) -> void:
 	ingredients = synced_ingredients
-
-
-@rpc("authority", "call_local", "reliable")
-func _trigger_game_over() -> void:
-	is_game_over = true
-	print("game over")
+	splash_audio.play()
 
 
 func _pick_new_request() -> void:

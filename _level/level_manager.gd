@@ -19,8 +19,16 @@ const PICKABLE_ITEM = preload("uid://ckl8vqyes3cml")
 @onready var cats: Node = $Cats
 
 @onready var soup: Soup = $Soup
+@onready var game_over_screen: TextureRect = %GameOverScreen
+@onready var restart_game_btn: Button = %RestartGameBtn
+
+var survival_time: float = 0.0
+var is_game_active: bool = true
+@onready var survived_label: Label = %SurvivedLabel
+
 const CAT = preload("uid://bt8rvbp8bgh8w")
 
+signal restart_requested()
 
 func _ready() -> void:
 	_spawn_rats()
@@ -32,9 +40,40 @@ func _ready() -> void:
 		buturuga_spawn_timer.start()
 		cat_spawn_timer.timeout.connect(_on_cat_spawn_timer)
 		_start_random_cat_timer()
+		
+		if soup:
+			soup.soup_ruined.connect(_on_soup_ruined)
+
+
+func _process(delta: float) -> void:
+	if multiplayer.is_server() and is_game_active:
+		survival_time += delta
+
+func _on_soup_ruined() -> void:
+	if multiplayer.is_server():
+		is_game_active = false
+		_show_game_over.rpc(int(survival_time))
+
+
+@rpc("authority", "call_local", "reliable")
+func _show_game_over(time: int) -> void:
+	item_spawn_timer.stop()
+	buturuga_spawn_timer.stop()
+	game_over_screen.show()
+	if int(time) > 300:
+		survived_label.text = "Time survived:\n %s seconds, you won! the village survived the winter" % int(time)
+	else:
+		survived_label.text = "Time survived:\n %s seconds, you lost\n the village starved :^(" % int(time)
+	AudioServer.set_bus_mute(0, true)
+	if multiplayer.is_server():
+		restart_game_btn.show()
+
+func _on_restart_game_btn_pressed() -> void:
+	if multiplayer.is_server():
+		restart_requested.emit()
 
 func _start_random_cat_timer() -> void:
-	cat_spawn_timer.wait_time = randf_range(5.0, 5.0)
+	cat_spawn_timer.wait_time = randf_range(30.0, 45.0)
 	cat_spawn_timer.start()
 
 func _on_cat_spawn_timer() -> void:

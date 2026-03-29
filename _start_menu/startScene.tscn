@@ -2,6 +2,8 @@
 
 [ext_resource type="Theme" uid="uid://dvnm8f75jaivf" path="res://theme/menu_ui.tres" id="1_77lh3"]
 [ext_resource type="Script" uid="uid://t1nd2rilvt23" path="res://_start_menu/start_scene.gd" id="1_uxywv"]
+[ext_resource type="Texture2D" uid="uid://4h6e34mg4lb4" path="res://Assets/BG/start_bg.png" id="2_lt0al"]
+[ext_resource type="PackedScene" uid="uid://e6rgcgkgxekp" path="res://settings_menu/settings.tscn" id="4_5xf8s"]
 
 [node name="StartScene" type="Control" unique_id=843580222]
 layout_mode = 3
@@ -12,22 +14,51 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uxywv")
 
-[node name="Start_btn" type="Button" parent="." unique_id=746328452]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=812466088]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_lt0al")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=499371028]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -24.5
+offset_right = 35.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start_btn" type="Button" parent="VBoxContainer" unique_id=746328452]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 16)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -35.0
-offset_top = -135.0
-offset_right = 35.0
-offset_bottom = -98.0
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 2
 theme = ExtResource("1_77lh3")
 text = "Start"
 
-[connection signal="pressed" from="Start_btn" to="." method="_on_start_btn_pressed"]
+[node name="SettingsBtn" type="Button" parent="VBoxContainer" unique_id=1580143939]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("1_77lh3")
+text = "Settings"
+
+[node name="QuitBtn" type="Button" parent="VBoxContainer" unique_id=1960465445]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("1_77lh3")
+text = "Quit"
+
+[node name="Settings" parent="." unique_id=1180804152 instance=ExtResource("4_5xf8s")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/Start_btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

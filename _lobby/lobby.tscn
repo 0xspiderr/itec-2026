@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://yitpqaigpqvx" path="res://_lobby/lobby.gd" id="1_fuoyk"]
 [ext_resource type="Theme" uid="uid://dvnm8f75jaivf" path="res://theme/menu_ui.tres" id="1_w4r5k"]
 [ext_resource type="FontFile" uid="uid://daanan4q0ggpn" path="res://font/yoster.ttf" id="2_kxvj5"]
+[ext_resource type="Texture2D" uid="uid://4h6e34mg4lb4" path="res://Assets/BG/start_bg.png" id="3_vt08d"]
+[ext_resource type="Theme" uid="uid://bhbv6t23ec0ip" path="res://theme/ui_buttons.tres" id="4_ex7t2"]
+[ext_resource type="Theme" uid="uid://5g0flvr566fg" path="res://theme/button.tres" id="5_dskl3"]
 
 [node name="Lobby" type="Control" unique_id=1552650006]
 layout_mode = 3
@@ -13,6 +16,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_w4r5k")
 script = ExtResource("1_fuoyk")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=488114241]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vt08d")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=394125248]
 clip_contents = true

@@ -1,11 +1,21 @@
 [gd_scene format=3 uid="uid://32y77v0gdfej"]
 
+[ext_resource type="Shader" uid="uid://biij76ntodusg" path="res://Environment_scenes/wind.gdshader" id="1_54dl4"]
 [ext_resource type="Texture2D" uid="uid://87bjq8oqao2a" path="res://Assets/Environment_objects/Trees/pine_tree_small.png" id="1_kxt3m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c311g"]
+shader = ExtResource("1_54dl4")
+shader_parameter/start_y = 0.3
+shader_parameter/strength = 0.15
+shader_parameter/curve_scale = 0.2870000136325
+shader_parameter/speed = 2.0
+shader_parameter/wind_start = 0.0
 
 [node name="Tree_small" type="StaticBody2D" unique_id=175747846]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1851076419]
 texture_filter = 1
+material = SubResource("ShaderMaterial_c311g")
 position = Vector2(0, -43)
 texture = ExtResource("1_kxt3m")
 

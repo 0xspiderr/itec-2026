@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cppgfdafhgtla" path="res://_cat/cat.gd" id="1_0chiy"]
 [ext_resource type="Texture2D" uid="uid://k1anjcivrtt4" path="res://Assets/Cat_animations/cat_running.png" id="2_0wr8i"]
 [ext_resource type="Texture2D" uid="uid://ckwhvsyb4074d" path="res://Assets/Cat_animations/cat_explodes.png" id="3_5ab5e"]
+[ext_resource type="AudioStream" uid="uid://llaivwwo5oad" path="res://_sounds/cat.wav" id="4_lj4ao"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7flm6"]
 atlas = ExtResource("3_5ab5e")
@@ -124,6 +125,9 @@ properties/1/replication_mode = 2
 properties/2/path = NodePath(".:sync_anim")
 properties/2/spawn = true
 properties/2/replication_mode = 2
+properties/3/path = NodePath("AudioStreamPlayer2D:playing")
+properties/3/spawn = true
+properties/3/replication_mode = 2
 
 [node name="Cat" type="CharacterBody2D" unique_id=1355514331]
 collision_layer = 4
@@ -150,3 +154,6 @@ shape = SubResource("RectangleShape2D_lj4ao")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=826556006]
 replication_config = SubResource("SceneReplicationConfig_5ab5e")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1978511541]
+stream = ExtResource("4_lj4ao")

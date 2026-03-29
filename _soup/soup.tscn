@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bmissj4motivb" path="res://Assets/Pickups/pickup_turnip.png" id="6_000xh"]
 [ext_resource type="Texture2D" uid="uid://be2tp481vo457" path="res://Assets/UI/speech_bubble.png" id="6_8c1p4"]
 [ext_resource type="Texture2D" uid="uid://bu6ivw6s6i4xt" path="res://Assets/Pickups/pickup_frozen_rabbit_leg.png" id="7_htqbx"]
+[ext_resource type="AudioStream" uid="uid://drh8bno1yfe6e" path="res://_sounds/soup.wav" id="10_hkld1"]
+[ext_resource type="AudioStream" uid="uid://b80d8rxfsd5dg" path="res://_sounds/soup_drop.mp3" id="11_5wwax"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0p4kj"]
 atlas = ExtResource("2_y8oxa")
@@ -112,3 +114,11 @@ texture_filter = 1
 texture = ExtResource("6_8c1p4")
 
 [node name="BubbleItem" type="Sprite2D" parent="SpeechBubbleSpawn/SpeechBubble" unique_id=1553057109]
+
+[node name="BoilAudio" type="AudioStreamPlayer2D" parent="." unique_id=1660405296]
+stream = ExtResource("10_hkld1")
+autoplay = true
+max_distance = 400.0
+
+[node name="SplashAudio" type="AudioStreamPlayer2D" parent="." unique_id=2035156449]
+stream = ExtResource("11_5wwax")
