@@ -1,5 +1,11 @@
 # itec-2026
 
+### Game
+https://ddaerb.itch.io/the-eternal-soup
+
+Multiplayer LAN game made for a 40 hour college hackathon, can be played over the Internet by using tunneling services such as Hamachi, Wireguard etc.
+### Resources used
+
 link font https://www.1001fonts.com/yoster-island-font.html  
 
 soup sound: https://freesound.org/people/itinerantmonk108/sounds/763187/  
